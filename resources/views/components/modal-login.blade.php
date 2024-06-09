@@ -11,11 +11,14 @@
                 <span><i class="fa-solid fa-user"></i>Email</span>
                 <input type="email" name="input-email-login">
             </div>
+            <span class="error-message hide-content" id="span-email-error"><i class="fa-solid fa-circle-exclamation"></i> Email invalido</span>
             <div class="modal-body-container-input-container">
                 <span><i class="fa-solid fa-lock"></i>Senha</span>
                 <span class="eye-span"><i class="fa-solid fa-eye-slash"></i></span>
                 <input type="password" name="input-password-login">
             </div>
+            <span class="error-message hide-content" id="span-senha-error"><i class="fa-solid fa-circle-exclamation"></i> Senha invalida</span>
+
             <span class="forget-password">Esqueceu a senha?</span>
           </div>
         </div>

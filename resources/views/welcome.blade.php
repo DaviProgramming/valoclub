@@ -429,7 +429,6 @@
 @section('scripts')
 
     <script>
-
         const createListeners = () => {
 
             const dropdownHeader = document.querySelector('.dropdown-header');
@@ -473,6 +472,17 @@
                     })
 
                 })
+            }
+
+            const inputsFromForms = document.querySelectorAll('.modal input');
+
+            if (inputsFromForms != null) {
+
+                inputsFromForms.forEach(input => {
+
+                    formActions.changesInput(input);
+
+                })
 
             }
 
@@ -480,15 +490,13 @@
 
         const dropdownActions = {
 
-            controller(dropdownClick){
+            controller(dropdownClick) {
 
                 let dropdownBody = document.querySelector('.dropdown-body');
 
-                if(dropdownBody.classList.contains('active')){
+                if (dropdownBody.classList.contains('active')) {
                     dropdownBody.classList.remove('active');
-                }
-
-                else {
+                } else {
                     dropdownBody.classList.add('active');
 
                 }
@@ -501,28 +509,102 @@
         const formActions = {
 
 
-            changesInput(){
+            changesInput(input) {
+
+                input.addEventListener('click', (e) => {
+
+                    let inputClicado = e.target;
+
+                    let span = inputClicado.parentNode.querySelector('span');
+
+
+                    if (input.value.length <= 0) {
+
+                        if (span.classList.contains('hide-content')) {
+
+                            span.classList.remove('hide-content');
+
+                        }
+
+                    } else {
+
+
+                        if (!span.classList.contains('hide-content')) {
+
+                            span.classList.add('hide-content');
+
+                        }
+
+                    }
+
+
+
+                })
+
+
+                input.addEventListener('keyup', (e) => {
+
+                    let inputClicado = e.target;
+
+                    console.log(inputClicado.value);
+
+                    let span = inputClicado.parentNode.querySelector('span');
+
+                    if (inputClicado.value.length <= 0) {
+
+                        if (span.classList.contains('hide-content')) {
+
+                            span.classList.remove('hide-content');
+
+                        }
+
+                    } else {
+
+                        if (!span.classList.contains('hide-content')) {
+
+                            span.classList.add('hide-content');
+
+                        }
+
+                    }
+
+                })
+
+                input.addEventListener('blur', (e) => {
+
+                    let inputClicado = e.target;
+
+                    let span = inputClicado.parentNode.querySelector('span');
+
+                    if (inputClicado.value.length < 1) {
+
+                        if (span.classList.contains('hide-content')) {
+
+                            span.classList.remove('hide-content');
+
+                        }
+
+                    }
+
+                })
+
 
 
             },
 
-            showPasswords(eye){
+            showPasswords(eye) {
 
                 let parentDiv = eye.parentNode.parentNode;
 
                 let input = parentDiv.querySelector('input');
 
-                console.log(input);
-                console.log(eye);
-
-                if(eye.classList.contains('fa-eye')){
+                if (eye.classList.contains('fa-eye')) {
 
                     eye.classList.remove('fa-eye');
 
                     eye.classList.add('fa-eye-slash');
 
-                }
-                else if(eye.classList.contains('fa-eye-slash')){
+                } else if (eye.classList.contains('fa-eye-slash')) {
 
                     eye.classList.remove('fa-eye-slash');
                     eye.classList.add('fa-eye');
@@ -530,11 +612,11 @@
 
                 }
 
-                if(input.type == 'password'){
+                if (input.type == 'password') {
 
                     input.type = 'text';
 
-                } else{
+                } else {
 
                     input.type = 'password';
 

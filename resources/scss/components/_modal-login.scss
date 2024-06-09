@@ -4,10 +4,11 @@
 
     .modal-content {
         max-width: 400px;
-        background: #54039F;
+        background: #54039f;
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
-        border: none;
+        box-shadow: 0 0 100px -20px $black-color inset,
+            -10px 0px 15px #7000da inset, 10px 0px 15px #7000da inset;
 
         .modal-header {
             border: none !important;
@@ -26,13 +27,12 @@
             }
         }
 
-
-        .btn-secondary{
+        .btn-secondary {
             background: transparent;
             border: 1px solid $secondary-color;
 
-            &:hover{
-            border: 1px solid $white-color;
+            &:hover {
+                border: 1px solid $white-color;
                 transition: 0.2s;
             }
         }
@@ -41,7 +41,15 @@
             &-container {
                 display: flex;
                 flex-direction: column;
-                gap: 20px;
+                gap: 10px;
+
+                .error-message {
+                    background: $red-color;
+                    padding: 5px;
+                    border-radius: 6px;
+                    font-weight: 400;
+                    font-size: 12px;
+                }
 
                 &-input-container {
                     display: flex;
@@ -51,6 +59,14 @@
                     border: 2px solid $white-color;
                     border-radius: 6px;
                     height: 40px;
+
+                    &.error {
+                        border: 2px solid $red-color;
+
+                        span {
+                            color: $red-color;
+                        }
+                    }
 
                     span {
                         position: absolute;
@@ -76,10 +92,19 @@
                         color: $white-color;
                         padding: 5px 10px;
                     }
+
+                    input:-webkit-autofill,
+                    input:-webkit-autofill:focus {
+                        transition: background-color 600000s 0s,
+                        color 600000s 0s;
+                    }
+                    input[data-autocompleted] {
+                        background-color: transparent !important;
+                    }
                 }
             }
 
-            #formFileSm{
+            #formFileSm {
                 background: #090007;
                 color: $white-color;
             }
