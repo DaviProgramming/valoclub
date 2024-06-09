@@ -1,0 +1,96 @@
+.modal-login {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    .modal-content {
+        max-width: 400px;
+        background: #54039F;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: none;
+
+        .modal-header {
+            border: none !important;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            opacity: 1;
+
+            button {
+                color: $white-color;
+            }
+
+            i {
+                color: $white-color;
+                cursor: pointer;
+            }
+        }
+
+
+        .btn-secondary{
+            background: transparent;
+            border: 1px solid $secondary-color;
+
+            &:hover{
+            border: 1px solid $white-color;
+                transition: 0.2s;
+            }
+        }
+
+        .modal-body {
+            &-container {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                &-input-container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    position: relative;
+                    border: 2px solid $white-color;
+                    border-radius: 6px;
+                    height: 40px;
+
+                    span {
+                        position: absolute;
+                        top: 5px;
+                        left: 10px;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 5px;
+
+                        &.eye-span {
+                            top: 10px;
+                            right: 10px;
+                            left: initial;
+                            cursor: pointer;
+                        }
+                    }
+
+                    input {
+                        outline: none;
+                        background: transparent;
+                        border: none;
+                        color: $white-color;
+                        padding: 5px 10px;
+                    }
+                }
+            }
+
+            #formFileSm{
+                background: #090007;
+                color: $white-color;
+            }
+            .forget-password {
+                margin-top: -8px;
+            }
+        }
+
+        .modal-footer {
+            border: none !important;
+            justify-content: space-between;
+        }
+    }
+}

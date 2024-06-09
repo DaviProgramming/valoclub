@@ -1,0 +1,30 @@
+.dropdown {
+    position: relative;
+
+    &-header {
+        background: $grey-color;
+        padding: 10px 20px;
+        border-radius: 6px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+    }
+
+    &-body{
+        position: absolute;
+        margin-top: 5px;
+        z-index: 5;
+        background: $grey-color;
+        width: 100%;
+        border-radius: 6px;
+        display: none!important;
+        flex-direction: column;
+        gap: 0px;
+        &-option{
+            padding: 1px 20px;
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,19 @@
+@import "./abstract/colors";
+@import "./abstract/fonts";
+
+@import "./components/navbar";
+@import "./components/modal-login";
+@import "./components/footer";
+@import "./pages/home";
+
+body{
+
+background-image: linear-gradient(to right bottom, #0e001a, #140223, #17042c, #1b0535, #1f043e, #1f043e, #1f043e, #1f043e, #1b0535, #17042c, #140223, #0e001a);
+color: $white-color;
+font-family: $font-primary;
+padding: 0;
+margin: 0;
+width: 100%;
+position: relative;
+overflow-x: hidden;
+}
