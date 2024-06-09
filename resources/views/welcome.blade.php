@@ -432,6 +432,14 @@
 
         const createListeners = () => {
 
+            const dropdownHeader = document.querySelector('.dropdown-header');
+
+            dropdownHeader.addEventListener('click', (e) => {
+
+                dropdownActions.controller(e.target);
+
+            })
+
             const buttonOpenModalCadastro = document.querySelector('#button-criar-conta');
             buttonOpenModalCadastro.addEventListener('click', (e) => {
 
@@ -465,6 +473,25 @@
                     })
 
                 })
+
+            }
+
+        }
+
+        const dropdownActions = {
+
+            controller(dropdownClick){
+
+                let dropdownBody = document.querySelector('.dropdown-body');
+
+                if(dropdownBody.classList.contains('active')){
+                    dropdownBody.classList.remove('active');
+                }
+
+                else {
+                    dropdownBody.classList.add('active');
+
+                }
 
             }
 

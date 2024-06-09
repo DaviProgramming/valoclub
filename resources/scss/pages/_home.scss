@@ -27,10 +27,9 @@
     width: max-content;
     align-self: center;
     border-radius: 6px;
-    position: relative;
-    overflow: hidden;
 
-    &::before {
+    position: relative;
+    &::before{
         position: absolute;
         content: "";
         background-image: url("../../../public/assets/wallpaper-jett.jpg");
