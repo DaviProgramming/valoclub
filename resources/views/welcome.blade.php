@@ -4,7 +4,7 @@
 
 
 @section('head-content')
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" type="text/css" />
 @endsection
 
@@ -429,7 +429,25 @@
 @section('scripts')
 
     <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+
         const createListeners = () => {
+
+            const buttonCriaConta = document.querySelector('.btn-criar-conta');
+
+            if (buttonCriaConta != null) {
+
+                buttonCriaConta.addEventListener('click', (e) => {
+
+                    formActions.clickButtonCriarConta(e.target);
+
+                })
+
+            }
 
             const dropdownHeader = document.querySelector('.dropdown-header');
 
@@ -506,8 +524,288 @@
         }
 
 
+        const validations = {
+
+
+            validarEmail(email) {
+
+                const re = /\S+@\S+\.\S+/;
+                return re.test(email);
+
+            },
+
+
+            validaSenha(senha) {
+
+                if (senha.length < 8) {
+                    return "A senha deve ter no mínimo 8 caracteres.";
+                }
+
+                var regexCaracteresEspeciais = /[!@#$%^&*(),.?":{}|<>]/;
+                if (!regexCaracteresEspeciais.test(senha)) {
+                    return "A senha deve conter pelo menos um caractere especial.";
+                }
+
+                var regexLetrasMaiusculas = /[A-Z]/;
+                var regexLetrasMinusculas = /[a-z]/;
+                if (!regexLetrasMaiusculas.test(senha) || !regexLetrasMinusculas.test(senha)) {
+                    return "A senha deve conter pelo menos uma letra maiúscula e uma letra minúscula.";
+                }
+
+                var regexNumeros = /[0-9]/;
+                if (!regexNumeros.test(senha)) {
+                    return "A senha deve conter pelo menos um número.";
+                }
+
+
+                return true;
+
+            },
+
+            confirmaSenha(input1, input2) {
+
+
+                if (input1.value == input2.value && input2.value) {
+
+                    return true;
+
+                } else {
+
+                    return false;
+
+                }
+
+            }
+
+        }
+
         const formActions = {
 
+            limpaModal(modal) {
+
+                let inputs = modal.querySelectorAll('input');
+
+                inputs.forEach(function(input) {
+                    input.value = '';
+                });
+
+            },
+
+            clickButtonCriarConta(button) {
+
+                let divPai = button.parentNode.parentNode;
+
+                let modalBodyContent = divPai.querySelector('.modal-body-container');
+
+                let emailInput = modalBodyContent.querySelector('input[name="email-singup"]');
+                let spanEmailError = modalBodyContent.querySelector('span#span-email-cadastro-error');
+
+                let senhaInput = modalBodyContent.querySelector('input[name="password-singup"]');
+                let spanSenhaError = modalBodyContent.querySelector('span#span-senha-cadastro-error');
+
+                let confirmaSenhaInput = modalBodyContent.querySelector('input[name="confirm-password-singup"]');
+                let spanConfirmaSenhaError = modalBodyContent.querySelector('span#span-confirma-senha-cadastro-error');
+
+                let imagemInput = modalBodyContent.querySelector('#formFileSm')
+
+
+                let errosContados = 0;
+
+
+                if (!validations.validarEmail(emailInput.value)) {
+
+
+                    if (spanEmailError.classList.contains('hide-content')) {
+
+                        spanEmailError.classList.remove('hide-content');
+                    }
+
+                    let containerInput = emailInput.parentNode;
+
+                    if (!containerInput.classList.contains('error')) {
+                        containerInput.classList.add('error')
+                    }
+
+                    errosContados++;
+
+                } else {
+
+
+                    if (!spanEmailError.classList.contains('hide-content')) {
+                        spanEmailError.classList.add('hide-content');
+                    }
+
+                    let containerInput = emailInput.parentNode;
+
+                    if (containerInput.classList.contains('error')) {
+                        containerInput.classList.remove('error')
+                    }
+
+
+                }
+
+
+                if (validations.validaSenha(senhaInput.value) != true) {
+
+                    if (spanSenhaError.classList.contains('hide-content')) {
+                        spanSenhaError.classList.remove('hide-content');
+                    }
+
+                    let containerInput = senhaInput.parentNode;
+
+                    if (!containerInput.classList.contains('error')) {
+                        containerInput.classList.add('error')
+                    }
+
+                    spanSenhaError.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> ' + validations
+                        .validaSenha(senhaInput.value);
+
+                    errosContados++;
+
+                } else {
+
+                    if (!spanSenhaError.classList.contains('hide-content')) {
+                        spanSenhaError.classList.add('hide-content');
+                    }
+
+                    let containerInput = senhaInput.parentNode;
+
+                    if (containerInput.classList.contains('error')) {
+                        containerInput.classList.remove('error')
+                    }
+
+                }
+
+
+                if (confirmaSenhaInput.value != null && confirmaSenhaInput.value != '') {
+
+                    if (validations.confirmaSenha(senhaInput, confirmaSenhaInput)) {
+
+                        if (!spanConfirmaSenhaError.classList.contains('hide-content')) {
+
+                            spanConfirmaSenhaError.classList.add('hide-content');
+
+                        }
+
+                        let containerInput = confirmaSenhaInput.parentNode;
+
+
+                        if (containerInput.classList.contains('error')) {
+
+                            containerInput.classList.remove('error');
+
+                        }
+
+
+                    } else {
+
+                        if (spanConfirmaSenhaError.classList.contains('hide-content')) {
+
+                            spanConfirmaSenhaError.classList.remove('hide-content');
+
+                        }
+
+                        let containerInput = confirmaSenhaInput.parentNode;
+
+                        if (!containerInput.classList.contains('error')) {
+
+                            containerInput.classList.add('error');
+
+                        }
+
+                        errosContados++;
+
+                    }
+
+
+
+
+
+
+
+                }
+
+                if (errosContados == 0) {
+
+                    let imagem = $('#formFileSm')[0].files[0];
+
+                    let formData = new FormData();
+
+                    formData.append('imagem', imagem);
+                    formData.append('email', emailInput.value)
+                    formData.append('senha', senhaInput.value)
+
+                    let componentsComLoading = divPai.querySelector('.loading-component');
+                    let loading = componentsComLoading.querySelector('.loader');
+                    let successComponent = componentsComLoading.querySelector('.success-icon');
+
+                    if (componentsComLoading.classList.contains('hide-content')) {
+
+                        componentsComLoading.classList.remove('hide-content');
+
+                        if (loading.classList.contains('hide-content')) {
+
+                            loading.classList.remove('hide-content');
+
+                        }
+
+                    }
+
+
+                    $.ajax({
+                        url: '/evento/cadastro',
+                        type: 'POST',
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function(response) {
+
+                            if (response.success) {
+
+                                if (!loading.classList.contains('hide-content')) {
+
+                                    loading.classList.add('hide-content');
+
+                                }
+
+                                if (successComponent.classList.contains('hide-content')) {
+
+                                    successComponent.classList.remove('hide-content');
+
+                                }
+
+                                setTimeout(() => {
+
+                                    if (!componentsComLoading.classList.contains('hide-content')) {
+
+                                        componentsComLoading.classList.add('hide-content')
+
+                                    }
+
+                                    window.location.reload();
+
+
+
+
+
+
+                                }, 2000);
+
+
+
+                            }
+                        },
+                        error: function(xhr, status, error) {}
+                    });
+
+                }
+
+
+
+
+
+
+            },
 
             changesInput(input) {
 
@@ -541,12 +839,10 @@
 
                 })
 
-
                 input.addEventListener('keyup', (e) => {
 
                     let inputClicado = e.target;
 
-                    console.log(inputClicado.value);
 
                     let span = inputClicado.parentNode.querySelector('span');
 

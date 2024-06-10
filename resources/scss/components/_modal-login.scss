@@ -105,11 +105,12 @@
             }
 
             #formFileSm {
-                background: #090007;
+                background: $secondary-color;
                 color: $white-color;
+                border: 2px solid $white-color;
             }
             .forget-password {
-                margin-top: -8px;
+                margin-top: 5px;
             }
         }
 

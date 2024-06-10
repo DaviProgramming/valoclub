@@ -17,7 +17,7 @@
                 <span class="eye-span"><i class="fa-solid fa-eye-slash"></i></span>
                 <input type="password" name="input-password-login">
             </div>
-            <span class="error-message hide-content" id="span-senha-error"><i class="fa-solid fa-circle-exclamation"></i> Senha invalida</span>
+            <span class="error-message hide-content" id="span-senha-error"><i class="fa-solid fa-circle-exclamation"></i>A senha deve conter pelo menos 2 caracteres</span>
 
             <span class="forget-password">Esqueceu a senha?</span>
           </div>
