@@ -38,6 +38,16 @@
         }
 
         .modal-body {
+            .create-account{
+
+                .dropdown-header{
+                    background: transparent;
+                    border: 2px solid $white-color;
+                    padding: 5px 10px;
+                    gap: 5px;
+                }
+
+            }
             &-container {
                 display: flex;
                 flex-direction: column;

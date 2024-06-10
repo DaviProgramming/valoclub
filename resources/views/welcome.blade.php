@@ -22,15 +22,15 @@
                     <span>Selecione um Elo</span>
                 </div>
                 <div class="dropdown-body">
-                    <div class="dropdown-body-option">Ferro</div>
-                    <div class="dropdown-body-option">Bronze</div>
-                    <div class="dropdown-body-option">Prata</div>
-                    <div class="dropdown-body-option">Ouro</div>
-                    <div class="dropdown-body-option">Platina</div>
-                    <div class="dropdown-body-option">Diamante</div>
-                    <div class="dropdown-body-option">Ascendente</div>
-                    <div class="dropdown-body-option">Imortal</div>
-                    <div class="dropdown-body-option">Radiante</div>
+                    <div class="dropdown-body-option" data-elo-id="1">Ferro</div>
+                    <div class="dropdown-body-option" data-elo-id="2">Bronze</div>
+                    <div class="dropdown-body-option" data-elo-id="3">Prata</div>
+                    <div class="dropdown-body-option" data-elo-id="4">Ouro</div>
+                    <div class="dropdown-body-option" data-elo-id="5">Platina</div>
+                    <div class="dropdown-body-option" data-elo-id="6">Diamante</div>
+                    <div class="dropdown-body-option" data-elo-id="7">Ascendente</div>
+                    <div class="dropdown-body-option" data-elo-id="8">Imortal</div>
+                    <div class="dropdown-body-option" data-elo-id="9">Radiante</div>
                 </div>
             </div>
             <div class="search-name">
@@ -449,13 +449,32 @@
 
             }
 
-            const dropdownHeader = document.querySelector('.dropdown-header');
+            const dropdownHeader = document.querySelectorAll('.dropdown-header');
 
-            dropdownHeader.addEventListener('click', (e) => {
+            dropdownHeader.forEach(dropdown => {
 
-                dropdownActions.controller(e.target);
+                dropdown.addEventListener('click', (e) => {
+
+                    dropdownActions.controller(e.target);
+
+                })
 
             })
+
+
+            const dropdownOptions = document.querySelectorAll('.dropdown-body-option');
+
+            dropdownOptions.forEach(option => {
+
+                option.addEventListener('click', (e) => {
+
+                    dropdownActions.optionClicked(e.target);
+
+                })
+
+
+            })
+
 
             const buttonOpenModalCadastro = document.querySelector('#button-criar-conta');
             buttonOpenModalCadastro.addEventListener('click', (e) => {
@@ -508,9 +527,44 @@
 
         const dropdownActions = {
 
+            optionClicked(option) {
+
+                let dropdownContainer = option.parentNode.parentNode;
+                let dropdownBody = dropdownContainer.querySelector('.dropdown-body');
+                let spanMostraElo = dropdownContainer.querySelector('.dropdown-header span');
+
+                spanMostraElo.innerHTML = option.innerHTML;
+                spanMostraElo.dataset.eloIdSelected = option.dataset.eloId;
+
+
+                if (dropdownBody.classList.contains('active')) {
+
+                    dropdownBody.classList.remove('active');
+
+                }
+
+
+
+            },
+
             controller(dropdownClick) {
 
-                let dropdownBody = document.querySelector('.dropdown-body');
+
+                let divFather = null;
+
+                if (dropdownClick.classList.contains('dropdown-header')) {
+
+                    divFather = dropdownClick.parentNode;
+
+                } else {
+
+                    divFather = dropdownClick.parentNode.parentNode;
+
+                }
+
+
+
+                let dropdownBody = divFather.querySelector('.dropdown-body');
 
                 if (dropdownBody.classList.contains('active')) {
                     dropdownBody.classList.remove('active');
@@ -529,9 +583,16 @@
 
             validarEmail(email) {
 
-                const re = /\S+@\S+\.\S+/;
+                let re = /\S+@\S+\.\S+/;
                 return re.test(email);
 
+            },
+
+            validaNome(nome) {
+
+                let regex = /^[a-zA-ZÀ-ÿ\s']+$/;
+
+                return regex.test(nome);
             },
 
 
@@ -597,6 +658,10 @@
 
                 let modalBodyContent = divPai.querySelector('.modal-body-container');
 
+                let nickNameInput = modalBodyContent.querySelector('input[name="nickName-singup"]');
+                console.log(nickNameInput);
+                let spanNickNameError = modalBodyContent.querySelector('span#span-nickName-cadastro-error');
+
                 let emailInput = modalBodyContent.querySelector('input[name="email-singup"]');
                 let spanEmailError = modalBodyContent.querySelector('span#span-email-cadastro-error');
 
@@ -608,8 +673,42 @@
 
                 let imagemInput = modalBodyContent.querySelector('#formFileSm')
 
+                let eloSelected = modalBodyContent.querySelector('.dropdown-header span').dataset.eloIdSelected;
+
 
                 let errosContados = 0;
+
+                if (!validations.validaNome(nickNameInput.value)) {
+
+                    if (spanNickNameError.classList.contains('hide-content')) {
+
+                        spanNickNameError.classList.remove('hide-content');
+                    }
+
+                    let containerInput = nickNameInput.parentNode;
+
+
+                    if (!containerInput.classList.contains('error')) {
+                        containerInput.classList.add('error')
+                    }
+
+                    errosContados++;
+
+                } else {
+
+
+                    if (!spanNickNameError.classList.contains('hide-content')) {
+                        spanNickNameError.classList.add('hide-content');
+                    }
+
+                    let containerInput = spanNickNameError.parentNode;
+
+                    if (containerInput.classList.contains('error')) {
+                        containerInput.classList.remove('error')
+                    }
+
+
+                }
 
 
                 if (!validations.validarEmail(emailInput.value)) {
@@ -718,11 +817,6 @@
                     }
 
 
-
-
-
-
-
                 }
 
                 if (errosContados == 0) {
@@ -732,8 +826,10 @@
                     let formData = new FormData();
 
                     formData.append('imagem', imagem);
-                    formData.append('email', emailInput.value)
-                    formData.append('senha', senhaInput.value)
+                    formData.append('email', emailInput.value);
+                    formData.append('senha', senhaInput.value);
+                    formData.append('elo_id', eloSelected);
+                    formData.append('nickName', nickNameInput.value);
 
                     let componentsComLoading = divPai.querySelector('.loading-component');
                     let loading = componentsComLoading.querySelector('.loader');
@@ -783,10 +879,6 @@
                                     }
 
                                     window.location.reload();
-
-
-
-
 
 
                                 }, 2000);

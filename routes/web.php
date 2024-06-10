@@ -13,6 +13,9 @@ Route::post('/evento/cadastro', function (Illuminate\Http\Request $request) {
 
     $email = $dados['email'];
     $senha = $dados['senha'];
+    $nickname = $dados['nickName'];
+    $elo = $dados['elo_id'];
+
 
     if ($request->hasFile('imagem')) {
 
@@ -33,8 +36,8 @@ Route::post('/evento/cadastro', function (Illuminate\Http\Request $request) {
     try {
 
         $user = new App\Models\User();
-        $user->nome = 'null';
-        $user->elo = 'null';
+        $user->nome = $nickname;
+        $user->elo = $elo;
         $user->email = $email;
         $user->senha = $senha;
         $user->imagem_url = $urlImagem;

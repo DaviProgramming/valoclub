@@ -13,11 +13,19 @@
         <div class="modal-body">
 
           <div class="modal-body-container">
+
             <div class="modal-body-container-input-container">
-                <span><i class="fa-solid fa-user"></i>Email</span>
+                <span><i class="fa-solid fa-envelope"></i>Email</span>
                 <input type="email" name="email-singup">
             </div>
             <span class="error-message hide-content" id="span-email-cadastro-error"><i class="fa-solid fa-circle-exclamation"></i> Email invalido</span>
+
+            <div class="modal-body-container-input-container">
+                <span><i class="fa-solid fa-user"></i>NickName</span>
+                <input type="email" name="nickName-singup">
+            </div>
+            <span class="error-message hide-content" id="span-nickName-cadastro-error"><i class="fa-solid fa-circle-exclamation"></i> NickName invalido</span>
+
             <div class="modal-body-container-input-container">
                 <span><i class="fa-solid fa-lock"></i>Senha</span>
                 <span class="eye-span"><i class="fa-solid fa-eye-slash"></i></span>
@@ -31,6 +39,24 @@
                 <input type="password" name="confirm-password-singup">
             </div>
             <span class="error-message hide-content" id="span-confirma-senha-cadastro-error"><i class="fa-solid fa-circle-exclamation"></i> As senhas digitadas não coincidem</span>
+
+            <div class="dropdown select-elo create-account">
+                <div class="dropdown-header">
+                    <i class="fa-solid fa-chevron-down"></i>
+                    <span data-elo-id-selected="0">Selecione seu elo</span>
+                </div>
+                <div class="dropdown-body">
+                    <div class="dropdown-body-option" data-elo-id="1">Ferro</div>
+                    <div class="dropdown-body-option" data-elo-id="2">Bronze</div>
+                    <div class="dropdown-body-option" data-elo-id="3">Prata</div>
+                    <div class="dropdown-body-option" data-elo-id="4">Ouro</div>
+                    <div class="dropdown-body-option" data-elo-id="5">Platina</div>
+                    <div class="dropdown-body-option" data-elo-id="6">Diamante</div>
+                    <div class="dropdown-body-option" data-elo-id="7">Ascendente</div>
+                    <div class="dropdown-body-option" data-elo-id="8">Imortal</div>
+                    <div class="dropdown-body-option" data-elo-id="9">Radiante</div>
+                </div>
+            </div>
 
             <div class="">
                 <label for="formFileSm" class="form-label">Imagem Perfil</label>
