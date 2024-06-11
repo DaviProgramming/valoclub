@@ -8,6 +8,12 @@
             <div class="loading-component hide-content">
                 <span class="loader hide-content"></span>
                 <div class="success-icon hide-content"><i class="fa-solid fa-check"></i></div>
+                <div class="error-icon hide-content">
+                    <div class="container-icon-error">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                    <span class="error-info"><i class="fa-solid fa-circle-exclamation"></i> Info do erro</span>
+                </div>
             </div>
 
             <div class="modal-body">

@@ -16,6 +16,21 @@ Route::post('/evento/cadastro', function (Illuminate\Http\Request $request) {
     $nickname = $dados['nickName'];
     $elo = $dados['elo_id'];
 
+    $existeEmail = User::where('email', $email)->exists();
+    $existeNickName = User::where('nome', $nickname)->exists();
+
+    if ($existeEmail ) {
+
+        return response()->json(['success' => false, 'error' => 'já existe uma conta com este email']);
+
+    }
+
+    if($existeNickName){
+
+        return response()->json(['success' => false, 'error' => 'já existe uma conta com este nickname']);
+
+    }
+
 
     if ($request->hasFile('imagem')) {
 
@@ -27,10 +42,9 @@ Route::post('/evento/cadastro', function (Illuminate\Http\Request $request) {
 
         $urlImagem = asset('uploads/' . $nomeImagem);
 
-    }else{
+    } else {
 
         $urlImagem = 'null';
-
     }
 
     try {
@@ -48,8 +62,10 @@ Route::post('/evento/cadastro', function (Illuminate\Http\Request $request) {
     } catch (\Exception $e) {
 
         return response()->json(['success' => false, 'error' => $e->getMessage()]);
-
     }
+});
 
+Route::post('/evento/login', function (Illuminate\Http\Request $request) {
 
+    $dados = $request->all();
 });

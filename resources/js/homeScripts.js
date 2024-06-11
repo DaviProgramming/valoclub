@@ -384,8 +384,8 @@ const formActions = {
             let componentsComLoading =
                 divPai.querySelector(".loading-component");
             let loading = componentsComLoading.querySelector(".loader");
-            let successComponent =
-                componentsComLoading.querySelector(".success-icon");
+            let successComponent = componentsComLoading.querySelector(".success-icon");
+            let errorComponent = componentsComLoading.querySelector('.error-icon');
 
             if (componentsComLoading.classList.contains("hide-content")) {
                 componentsComLoading.classList.remove("hide-content");
@@ -402,6 +402,8 @@ const formActions = {
                 contentType: false,
                 processData: false,
                 success: function (response) {
+
+
                     if (response.success) {
 
                         if (!loading.classList.contains("hide-content")) {
@@ -427,6 +429,34 @@ const formActions = {
 
                             window.location.reload();
                         }, 2000);
+                    }else{
+
+                        let error = response.error;
+                        let spanError = errorComponent.querySelector('span');
+
+                        spanError.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> ' + error;
+
+                        if (!loading.classList.contains("hide-content")) {
+                            loading.classList.add("hide-content");
+                        }
+
+                        if (
+                            errorComponent.classList.contains("hide-content")
+                        ) {
+                            errorComponent.classList.remove("hide-content");
+
+                        }
+
+
+                        setTimeout(() => {
+
+                            if (!componentsComLoading.classList.contains("hide-content")) {
+                                componentsComLoading.classList.add("hide-content");
+                            }
+
+                        }, 2000)
+
+
                     }
                 },
                 error: function (xhr, status, error) {},
