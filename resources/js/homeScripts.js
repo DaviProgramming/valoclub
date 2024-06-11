@@ -26,13 +26,11 @@ const createListeners = () => {
         });
     }
 
-    const buttonEntrarConta = document.querySelector('#logar-conta');
+    const buttonEntrarConta = document.querySelector("#logar-conta");
 
-    buttonEntrarConta.addEventListener('click', (e) => {
-
+    buttonEntrarConta.addEventListener("click", (e) => {
         formActions.clickButtonEntrarConta(e.target);
-
-    })
+    });
 
     const dropdownHeader = document.querySelectorAll(".dropdown-header");
 
@@ -173,7 +171,6 @@ const formActions = {
         let imgArea = document.querySelector(".img-area");
 
         if (imagem.size < 2000000) {
-
             let reader = new FileReader();
             reader.onload = () => {
                 const allImages = imgArea.querySelectorAll("img");
@@ -210,13 +207,11 @@ const formActions = {
             };
 
             reader.readAsDataURL(imagem);
-        } else{
-
+        } else {
             Swal.fire({
                 text: "A imagem deve conter menos de dois 2MB",
-                icon: "error"
-              });
-
+                icon: "error",
+            });
         }
     },
 
@@ -378,7 +373,6 @@ const formActions = {
         }
 
         if (errosContados == 0) {
-
             let imagem = $("#file-cadastro")[0].files[0];
 
             let formData = new FormData();
@@ -392,8 +386,10 @@ const formActions = {
             let componentsComLoading =
                 divPai.querySelector(".loading-component");
             let loading = componentsComLoading.querySelector(".loader");
-            let successComponent = componentsComLoading.querySelector(".success-icon");
-            let errorComponent = componentsComLoading.querySelector('.error-icon');
+            let successComponent =
+                componentsComLoading.querySelector(".success-icon");
+            let errorComponent =
+                componentsComLoading.querySelector(".error-icon");
 
             if (componentsComLoading.classList.contains("hide-content")) {
                 componentsComLoading.classList.remove("hide-content");
@@ -410,10 +406,7 @@ const formActions = {
                 contentType: false,
                 processData: false,
                 success: function (response) {
-
-
                     if (response.success) {
-
                         if (!loading.classList.contains("hide-content")) {
                             loading.classList.add("hide-content");
                         }
@@ -437,34 +430,33 @@ const formActions = {
 
                             window.location.reload();
                         }, 2000);
-                    }else{
-
+                    } else {
                         let error = response.error;
-                        let spanError = errorComponent.querySelector('span');
+                        let spanError = errorComponent.querySelector("span");
 
-                        spanError.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> ' + error;
+                        spanError.innerHTML =
+                            '<i class="fa-solid fa-circle-exclamation"></i> ' +
+                            error;
 
                         if (!loading.classList.contains("hide-content")) {
                             loading.classList.add("hide-content");
                         }
 
-                        if (
-                            errorComponent.classList.contains("hide-content")
-                        ) {
+                        if (errorComponent.classList.contains("hide-content")) {
                             errorComponent.classList.remove("hide-content");
-
                         }
 
-
                         setTimeout(() => {
-
-                            if (!componentsComLoading.classList.contains("hide-content")) {
-                                componentsComLoading.classList.add("hide-content");
+                            if (
+                                !componentsComLoading.classList.contains(
+                                    "hide-content"
+                                )
+                            ) {
+                                componentsComLoading.classList.add(
+                                    "hide-content"
+                                );
                             }
-
-                        }, 2000)
-
-
+                        }, 2000);
                     }
                 },
                 error: function (xhr, status, error) {},
@@ -472,63 +464,132 @@ const formActions = {
         }
     },
 
-    clickButtonEntrarConta(button){
-
-        let inputEmail = document.querySelector('input[name="input-email-login"]');
-        let spanEmail = document.querySelector('span#span-email-error');
+    clickButtonEntrarConta(button) {
+        let inputEmail = document.querySelector(
+            'input[name="input-email-login"]'
+        );
+        let spanEmail = document.querySelector("span#span-email-error");
         let containerEmail = inputEmail.parentNode;
 
-        let inputSenha = document.querySelector('input[name="input-password-login"]');
-        let spanSenha = document.querySelector('span#span-senha-error');
+        let inputSenha = document.querySelector(
+            'input[name="input-password-login"]'
+        );
+        let spanSenha = document.querySelector("span#span-senha-error");
         let containerSenha = inputSenha.parentNode;
 
-        let errosContados = 0;
+        let errosContadosLogin = 0;
 
-        if(!validations.validarEmail(inputEmail.value)){
-
-            if(!containerEmail.classList.contains('error')){
-
-                containerEmail.classList.add('error');
-
+        if (!validations.validarEmail(inputEmail.value)) {
+            if (!containerEmail.classList.contains("error")) {
+                containerEmail.classList.add("error");
             }
 
-            if(spanEmail.classList.contains('hide-content')){
-                spanEmail.classList.remove('hide-content');
+            if (spanEmail.classList.contains("hide-content")) {
+                spanEmail.classList.remove("hide-content");
             }
 
-            errosContados++;
-
-        }else{
-
-            if(containerEmail.classList.contains('error')){
-
-                containerEmail.classList.remove('error');
-
+            errosContadosLogin++;
+        } else {
+            if (containerEmail.classList.contains("error")) {
+                containerEmail.classList.remove("error");
             }
 
-            if(!spanEmail.classList.contains('hide-content')){
-                spanEmail.classList.add('hide-content');
+            if (!spanEmail.classList.contains("hide-content")) {
+                spanEmail.classList.add("hide-content");
             }
-
         }
 
+        if (validations.validaSenha(inputSenha.value) === true) {
+            if (containerSenha.classList.contains("error")) {
+                containerSenha.classList.remove("error");
+            }
 
-        if(!validations.validaSenha(inputSenha.value)){
+            if (!spanSenha.classList.contains("hide-content")) {
+                spanSenha.classList.add("hide-content");
+            }
+        } else {
+            if (!containerSenha.classList.contains("error")) {
+                containerSenha.classList.add("error");
+            }
 
-            if(!containerSenha.classList.contains('error')){
+            if (spanSenha.classList.contains("hide-content")) {
+                spanSenha.classList.remove("hide-content");
+            }
 
-                containerSenha.classList.remove('error');
+            spanSenha.innerHTML = validations.validaSenha(inputSenha.value);
+
+            errosContadosLogin++;
+        }
+
+        if (errosContadosLogin == 0) {
+            console.log("to aqui");
+
+            let formData = new FormData();
+
+            formData.append("email", inputEmail.value);
+            formData.append("senha", inputSenha.value);
+
+            let divPai = button.parentNode.parentNode;
+
+            console.log(divPai);
+
+            let componentsComLoading =
+                divPai.querySelector(".loading-component");
+            let loading = componentsComLoading.querySelector(".loader");
+            let successComponent =
+                componentsComLoading.querySelector(".success-icon");
+            let errorComponent =
+                componentsComLoading.querySelector(".error-icon");
+
+            if (componentsComLoading.classList.contains("hide-content")) {
+                componentsComLoading.classList.remove("hide-content");
+            }
+
+            if(loading.classList.contains('hide-content')){
+
+                loading.classList.remove('hide-content');
 
             }
 
+            $.ajax({
+                url: "/evento/login",
+                type: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: (response) => {
 
+                    console.log(response);
+
+                    if (response.success) {
+                        if (!loading.classList.contains("hide-content")) {
+                            loading.classList.add("hide-content");
+                        }
+
+                        if (
+                            successComponent.classList.contains("hide-content")
+                        ) {
+                            successComponent.classList.remove("hide-content");
+                        }
+
+
+
+
+
+                    }else{
+
+                        console.log(response);
+
+                    }
+                },
+
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText); // Saída do erro em console para depuração
+                    console.log(status)
+                    console.log(error);
+                }
+            });
         }
-
-
-
-        validations.validarEmail(inputEmail.value);
-
-
     },
 
     changesInput(input) {

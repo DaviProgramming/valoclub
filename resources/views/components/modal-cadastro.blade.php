@@ -5,10 +5,10 @@
                 <h1 class="modal-title fs-5">Cadastro</h1>
                 <i class="fa-solid fa-x" data-bs-dismiss="modal" aria-label="Close"></i>
             </div>
-            <div class="loading-component hide-content">
-                <span class="loader hide-content"></span>
-                <div class="success-icon hide-content"><i class="fa-solid fa-check"></i></div>
-                <div class="error-icon hide-content">
+            <div class="loading-component hide-content cadastro">
+                <span class="loader hide-content cadastro"></span>
+                <div class="success-icon hide-content cadastro"><i class="fa-solid fa-check"></i></div>
+                <div class="error-icon hide-content cadastro">
                     <div class="container-icon-error">
                         <i class="fa-solid fa-xmark"></i>
                     </div>

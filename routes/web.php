@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 Route::get('/', function () {
@@ -19,16 +20,14 @@ Route::post('/evento/cadastro', function (Illuminate\Http\Request $request) {
     $existeEmail = User::where('email', $email)->exists();
     $existeNickName = User::where('nome', $nickname)->exists();
 
-    if ($existeEmail ) {
+    if ($existeEmail) {
 
         return response()->json(['success' => false, 'error' => 'já existe uma conta com este email']);
-
     }
 
-    if($existeNickName){
+    if ($existeNickName) {
 
         return response()->json(['success' => false, 'error' => 'já existe uma conta com este nickname']);
-
     }
 
 
@@ -41,7 +40,6 @@ Route::post('/evento/cadastro', function (Illuminate\Http\Request $request) {
         $imagem->move(public_path('uploads'), $nomeImagem);
 
         $urlImagem = asset('uploads/' . $nomeImagem);
-
     } else {
 
         $urlImagem = 'null';
@@ -58,7 +56,6 @@ Route::post('/evento/cadastro', function (Illuminate\Http\Request $request) {
         $user->save();
 
         return response()->json(['success' => true]);
-
     } catch (\Exception $e) {
 
         return response()->json(['success' => false, 'error' => $e->getMessage()]);
@@ -67,5 +64,28 @@ Route::post('/evento/cadastro', function (Illuminate\Http\Request $request) {
 
 Route::post('/evento/login', function (Illuminate\Http\Request $request) {
 
+
+    $credenciais = $request->only('email', 'senha');
+
     $dados = $request->all();
+
+    $email = $dados['email'];
+    $senha = $dados['senha'];
+
+
+
+    $user = User::where('email', $email)->where('senha', $senha)->first();
+
+
+    if ($user) {
+
+        Auth::login($user);
+
+        return response()->json(['success' => true, 'user' => $user]);
+    }else{
+
+        return response()->json(['success' => false, 'error' => 'usuario nao encontrado']);
+
+
+    }
 });
