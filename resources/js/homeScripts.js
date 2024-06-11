@@ -26,6 +26,14 @@ const createListeners = () => {
         });
     }
 
+    const buttonEntrarConta = document.querySelector('#logar-conta');
+
+    buttonEntrarConta.addEventListener('click', (e) => {
+
+        formActions.clickButtonEntrarConta(e.target);
+
+    })
+
     const dropdownHeader = document.querySelectorAll(".dropdown-header");
 
     dropdownHeader.forEach((dropdown) => {
@@ -462,6 +470,65 @@ const formActions = {
                 error: function (xhr, status, error) {},
             });
         }
+    },
+
+    clickButtonEntrarConta(button){
+
+        let inputEmail = document.querySelector('input[name="input-email-login"]');
+        let spanEmail = document.querySelector('span#span-email-error');
+        let containerEmail = inputEmail.parentNode;
+
+        let inputSenha = document.querySelector('input[name="input-password-login"]');
+        let spanSenha = document.querySelector('span#span-senha-error');
+        let containerSenha = inputSenha.parentNode;
+
+        let errosContados = 0;
+
+        if(!validations.validarEmail(inputEmail.value)){
+
+            if(!containerEmail.classList.contains('error')){
+
+                containerEmail.classList.add('error');
+
+            }
+
+            if(spanEmail.classList.contains('hide-content')){
+                spanEmail.classList.remove('hide-content');
+            }
+
+            errosContados++;
+
+        }else{
+
+            if(containerEmail.classList.contains('error')){
+
+                containerEmail.classList.remove('error');
+
+            }
+
+            if(!spanEmail.classList.contains('hide-content')){
+                spanEmail.classList.add('hide-content');
+            }
+
+        }
+
+
+        if(!validations.validaSenha(inputSenha.value)){
+
+            if(!containerSenha.classList.contains('error')){
+
+                containerSenha.classList.remove('error');
+
+            }
+
+
+        }
+
+
+
+        validations.validarEmail(inputEmail.value);
+
+
     },
 
     changesInput(input) {
