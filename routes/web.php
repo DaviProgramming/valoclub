@@ -98,7 +98,21 @@ Route::post('/evento/login', function (Illuminate\Http\Request $request) {
         return response()->json(['success' => true, 'user' => $user]);
     } else {
 
-        return response()->json(['success' => false, 'error' => 'usuario nao encontrado']);
+        $userComEmail = User::where('email', $email)->first();
+
+
+        if($userComEmail){
+
+            return response()->json(['success' => false, 'error' => 'Senha invalida']);
+
+        }else {
+
+            return response()->json(['success' => false, 'error' => 'Usuário não encontrado']);
+
+
+        }
+
+
     }
 })->name('evento.login');
 
@@ -111,11 +125,15 @@ Route::post('/evento/logout', function (Illuminate\Http\Request $request) {
 
     if ($user) {
 
+        Auth::logout();
+
 
         return response()->json(['success' => true, 'message' => 'Usuario deslogado']);
 
 
     } else {
+
+
 
         return response()->json(['success' => false, 'message' => 'o usuario nao está logado']);
     }

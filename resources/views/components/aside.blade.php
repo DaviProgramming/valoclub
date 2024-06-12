@@ -7,15 +7,12 @@
 
         <div class="aside-component-content-header">
 
-
-
             <div class="aside-component-content-header-profile">
                 <img class="aside-component-content-header-profile-image logado" src="{{auth()->user()->imagem_url}}" alt="">
             </div>
             <div class="aside-component-content-header-name">
                 <span>Meu perfil</span>
             </div>
-
 
         </div>
 

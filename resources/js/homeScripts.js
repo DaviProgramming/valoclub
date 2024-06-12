@@ -156,7 +156,18 @@ const asideActions = {
             contentType: false,
             processData: false,
             success: (response) => {
-                console.log(response);
+
+                if(response.success == true){
+
+                    window.location.reload();
+
+                }else{
+
+                    window.location.reload();
+
+
+                }
+
             },
         });
     },
@@ -651,6 +662,8 @@ const formActions = {
             let errorComponent =
                 componentsComLoading.querySelector(".error-icon");
 
+            let spanError = componentsComLoading.querySelector('.error-info');
+
             if (componentsComLoading.classList.contains("hide-content")) {
                 componentsComLoading.classList.remove("hide-content");
             }
@@ -666,6 +679,7 @@ const formActions = {
                 contentType: false,
                 processData: false,
                 success: (response) => {
+
                     console.log(response);
 
                     if (response.success) {
@@ -678,8 +692,39 @@ const formActions = {
                         ) {
                             successComponent.classList.remove("hide-content");
                         }
+
+                        setTimeout(() => {
+
+                            window.location.reload();
+
+                        },2000)
                     } else {
-                        console.log(response);
+
+                        spanError.innerHTML = response.error;
+
+
+                        if (!loading.classList.contains("hide-content")) {
+                            loading.classList.add("hide-content");
+                        }
+
+                        if(errorComponent.classList.contains('hide-content')){
+                            errorComponent.classList.remove('hide-content');
+                        }
+
+                        setTimeout(() => {
+
+                            if(!componentsComLoading.classList.contains('hide-content')){
+                                componentsComLoading.classList.add('hide-content');
+                            }
+
+                            if(!errorComponent.classList.contains('hide-content')){
+                                errorComponent.classList.add('hide-content');
+                            }
+
+
+
+
+                        }, 2000)
                     }
                 },
 
@@ -693,6 +738,39 @@ const formActions = {
     },
 
     changesInput(input) {
+
+        let fatherDiv = input.parentNode;
+
+        if(!fatherDiv.classList.contains('container-upload-image')){
+
+            let spans = fatherDiv.querySelectorAll('span');
+
+            var filteredSpans = Array.from(spans).filter(function(span) {
+                return !span.classList.contains('eye-span');
+            });
+
+
+            filteredSpans.forEach(span => {
+
+                span.addEventListener('click', (e) => {
+
+
+                    let inputCalled = fatherDiv.querySelector('input');
+
+
+                    inputCalled.focus();
+
+
+
+                })
+
+            })
+
+
+        }
+
+
+
         input.addEventListener("click", (e) => {
             let inputClicado = e.target;
 
