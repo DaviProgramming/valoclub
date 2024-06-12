@@ -12,6 +12,41 @@
     align-items: center;
     gap: 20px;
     box-shadow: 0 10px 30px -10px black, 0 -5px 20px rgba(0, 0, 0, 0.295) inset;
+    overflow: auto;
+    animation: animationNotification 0.2s;
+
+
+    &:not(.hide-content){
+
+
+
+        @keyframes animationNotification {
+
+            from{
+                opacity: 0;
+            }
+
+            to{
+                opacity: 1;
+            }
+
+        }
+
+    }
+
+
+    &::-webkit-scrollbar{
+
+        width: 8px;
+        background: transparent;
+
+    }
+
+    &::-webkit-scrollbar-thumb{
+
+        background: $white-color;
+        border-radius: 30px;
+    }
 
     &-item{
 

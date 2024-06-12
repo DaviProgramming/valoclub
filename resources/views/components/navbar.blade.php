@@ -14,9 +14,18 @@
                 <span class="text-notification">Notificações</span>
             </div>
 
-            <div class="notificacoes-body">
+            <div class="notificacoes-body hide-content">
                 <div class="notificacoes-body-item">
                     <i class="fa-solid fa-circle-exclamation"></i><span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim veniam facilis consectetur, autem consequatur sapiente voluptates! Eligendi libero, repudiandae, est ex perspiciatis, distinctio quisquam placeat impedit maxime doloribus aperiam hic?</span>
+                </div>
+                <div class="notificacoes-body-item">
+                    <i class="fa-solid fa-circle-exclamation"></i><span>Exemplo de notificacao</span>
+                </div>
+                <div class="notificacoes-body-item">
+                    <i class="fa-solid fa-circle-exclamation"></i><span>Exemplo de notificacao</span>
+                </div>
+                <div class="notificacoes-body-item">
+                    <i class="fa-solid fa-circle-exclamation"></i><span>Exemplo de notificacao</span>
                 </div>
                 <div class="notificacoes-body-item">
                     <i class="fa-solid fa-circle-exclamation"></i><span>Exemplo de notificacao</span>

@@ -5,6 +5,29 @@ $.ajaxSetup({
 });
 
 const createListeners = () => {
+
+    const notifiacoesNavbar = document.querySelector('.notificacoes-header');
+
+    notifiacoesNavbar.addEventListener('click', (e) => {
+
+        e.preventDefault();
+
+        notificacoesActions.toggle();
+
+    })
+
+    const notificacoesBody = document.querySelector('.notificacoes-body');
+
+
+    notificacoesBody.addEventListener('mouseleave', (e) => {
+
+
+        notificacoesActions.close();
+
+    })
+
+
+
     const menuButton = document.querySelector(".hamburguer-menu");
 
     menuButton.addEventListener("click", (e) => {
@@ -97,6 +120,35 @@ const createListeners = () => {
         });
     }
 };
+
+
+const notificacoesActions = {
+
+    toggle(){
+
+
+        let bodyNotificacoes = document.querySelector('.notificacoes-body');
+
+        bodyNotificacoes.classList.toggle('hide-content')
+
+
+
+    },
+
+    close(){
+
+
+        console.log('chamou')
+        let bodyNotificacoes = document.querySelector('.notificacoes-body');
+
+        if(!bodyNotificacoes.classList.contains('hide-content')){
+            bodyNotificacoes.classList.add('hide-content')
+        }
+
+    }
+
+
+}
 
 const asideActions = {
 

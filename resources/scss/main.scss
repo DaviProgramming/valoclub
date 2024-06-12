@@ -28,6 +28,19 @@ overflow-x: hidden;
 }
 
 
+&::-webkit-scrollbar{
+    width: 10px;
+    background: $grey-color;
+}
+
+&::-webkit-scrollbar-thumb{
+
+    background: $white-color;
+    border-radius: 10px;
+
+}
+
+
 &::after{
     position: absolute;
     content: '';

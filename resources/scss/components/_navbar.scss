@@ -43,6 +43,14 @@ nav {
 
         @import "./notificacoes";
 
+        .hamburguer-menu{
+            cursor: pointer;
+            &:hover{
+                color: $orange-color;
+            }
+            transition: 0.2s;
+        }
+
         .notificacoes,
         .hamburguer-menu {
             display: flex;
@@ -60,6 +68,8 @@ nav {
 
                 &:hover {
                     color: $orange-color;
+            transition: 0.2s;
+
                 }
             }
 
