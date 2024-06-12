@@ -165,7 +165,6 @@ const asideActions = {
 
                     window.location.reload();
 
-
                 }
 
             },

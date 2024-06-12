@@ -39,7 +39,7 @@
 
             @auth
 
-            <div class="aside-component-content-body-item"><div class="aside-component-content-body-item-icon"><i class="fa-solid fa-plus"></i></div><span> Criar Lobby</span></div>
+            <div class="aside-component-content-body-item"><div class="aside-component-content-body-item-icon"><i class="fa-solid fa-plus"></i></div><span> Criar Solicitação</span></div>
 
 
             @endauth

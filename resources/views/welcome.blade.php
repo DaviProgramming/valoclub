@@ -39,7 +39,7 @@
             <div class="search-name">
                 <div class="input-search">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" name="" id="" placeholder="Pesquisar Sala">
+                    <input type="text" name="" id="" placeholder="Pesquisar Jogador">
                 </div>
             </div>
 
@@ -50,7 +50,7 @@
 
             <div class="create-lobby">
                 <i class="fa fa-calendar-plus"></i>
-                <span>criar novo lobby</span>
+                <span>criar solicitação</span>
             </div>
         </div>
 
@@ -59,357 +59,112 @@
             <div class="card-lobby">
 
                 <div class="card-lobby-header">
-                    <div class="card-lobby-media-elo silver">
-                        <img src="./assets/elos-images/Silver_1_Rank.png" alt="">
+                    <div class="card-lobby-media-elo">
+                        <img src="./assets/elos-images/Radiant_Rank.png" alt="">
                     </div>
-                    <div class="card-lobby-nome">Time Matuto</div>
+                    <div class="card-lobby-nome">Matuto</div>
 
                 </div>
 
-                <div class="card-lobby-players">
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo bronze">
-                            <img src="./assets/elos-images/Bronze_1_Rank.png" alt="">
-                        </div>
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo silver">
-                            <img src="./assets/elos-images/Silver_1_Rank.png" alt="">
-                        </div>
-
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo gold">
-                            <img src="./assets/elos-images/Gold_1_Rank.png" alt="">
-                        </div>
-
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo platinum">
-                            <img src="./assets/elos-images/Platinum_1_Rank.png" alt="">
-                        </div>
+                <img class="main-character" src="assets/agents-images/jett.png" alt="">
 
 
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
+                <div class="card-lobby-body">
+                    <div class="card-lobby-body-title">Funções</div>
+                    <div class="card-lobby-body-roles">
+                        <div class="card-lobby-body-roles-role">
+                            <img src="assets/roles-images/duelista.png" alt="duelista">
+                            <span>Duelista</span>
                         </div>
-                        <div class="elo diamond">
-                            <img src="./assets/elos-images/Diamond_1_Rank.png" alt="">
+                        <div class="card-lobby-body-roles-role">
+                            <img src="assets/roles-images/iniciador.png" alt="iniciador">
+                            <span>Iniciador</span>
                         </div>
-
+                        <div class="card-lobby-body-roles-role">
+                            <img src="assets/roles-images/Controlador.png" alt="controlador">
+                            <span>Controlador</span>
+                        </div>
                     </div>
                 </div>
-                <button class="card-lobby-button"><span><i class="fa-solid fa-arrow-right"></i>Entrar</span></button>
+
+
+
+                <button class="card-lobby-button"><span><i class="fa-solid fa-arrow-right"></i>Solicitar</span></button>
             </div>
+
             <div class="card-lobby">
 
                 <div class="card-lobby-header">
-                    <div class="card-lobby-media-elo silver">
-                        <img src="./assets/elos-images/Silver_1_Rank.png" alt="">
+                    <div class="card-lobby-media-elo">
+                        <img src="./assets/elos-images/Ascendant_3_Rank.png" alt="">
                     </div>
-                    <div class="card-lobby-nome">Time Matuto</div>
+                    <div class="card-lobby-nome">Matuto</div>
 
                 </div>
 
-                <div class="card-lobby-players">
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo bronze">
-                            <img src="./assets/elos-images/Bronze_1_Rank.png" alt="">
-                        </div>
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo silver">
-                            <img src="./assets/elos-images/Silver_1_Rank.png" alt="">
-                        </div>
-
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo gold">
-                            <img src="./assets/elos-images/Gold_1_Rank.png" alt="">
-                        </div>
-
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo platinum">
-                            <img src="./assets/elos-images/Platinum_1_Rank.png" alt="">
-                        </div>
+                <img class="main-character" src="assets/agents-images/jett.png" alt="">
 
 
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
+                <div class="card-lobby-body">
+                    <div class="card-lobby-body-title">Funções</div>
+                    <div class="card-lobby-body-roles">
+                        <div class="card-lobby-body-roles-role">
+                            <img src="assets/roles-images/duelista.png" alt="duelista">
+                            <span>Duelista</span>
                         </div>
-                        <div class="elo diamond">
-                            <img src="./assets/elos-images/Diamond_1_Rank.png" alt="">
+                        <div class="card-lobby-body-roles-role">
+                            <img src="assets/roles-images/iniciador.png" alt="iniciador">
+                            <span>Iniciador</span>
                         </div>
-
+                        <div class="card-lobby-body-roles-role">
+                            <img src="assets/roles-images/Controlador.png" alt="controlador">
+                            <span>Controlador</span>
+                        </div>
                     </div>
                 </div>
-                <button class="card-lobby-button"><span><i class="fa-solid fa-arrow-right"></i>Entrar</span></button>
+
+
+
+                <button class="card-lobby-button"><span><i class="fa-solid fa-arrow-right"></i>Solicitar</span></button>
             </div>
+
             <div class="card-lobby">
 
                 <div class="card-lobby-header">
-                    <div class="card-lobby-media-elo silver">
-                        <img src="./assets/elos-images/Silver_1_Rank.png" alt="">
+                    <div class="card-lobby-media-elo">
+                        <img src="./assets/elos-images/Diamond_3_Rank.png" alt="">
                     </div>
-                    <div class="card-lobby-nome">Time Matuto</div>
+                    <div class="card-lobby-nome">Matuto</div>
 
                 </div>
 
-                <div class="card-lobby-players">
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo bronze">
-                            <img src="./assets/elos-images/Bronze_1_Rank.png" alt="">
-                        </div>
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo silver">
-                            <img src="./assets/elos-images/Silver_1_Rank.png" alt="">
-                        </div>
-
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo gold">
-                            <img src="./assets/elos-images/Gold_1_Rank.png" alt="">
-                        </div>
-
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo platinum">
-                            <img src="./assets/elos-images/Platinum_1_Rank.png" alt="">
-                        </div>
+                <img class="main-character" src="assets/agents-images/jett.png" alt="">
 
 
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
+                <div class="card-lobby-body">
+                    <div class="card-lobby-body-title">Funções</div>
+                    <div class="card-lobby-body-roles">
+                        <div class="card-lobby-body-roles-role">
+                            <img src="assets/roles-images/duelista.png" alt="duelista">
+                            <span>Duelista</span>
                         </div>
-                        <div class="elo diamond">
-                            <img src="./assets/elos-images/Diamond_1_Rank.png" alt="">
+                        <div class="card-lobby-body-roles-role">
+                            <img src="assets/roles-images/iniciador.png" alt="iniciador">
+                            <span>Iniciador</span>
                         </div>
-
+                        <div class="card-lobby-body-roles-role">
+                            <img src="assets/roles-images/Controlador.png" alt="controlador">
+                            <span>Controlador</span>
+                        </div>
                     </div>
                 </div>
-                <button class="card-lobby-button"><span><i class="fa-solid fa-arrow-right"></i>Entrar</span></button>
+
+
+
+                <button class="card-lobby-button"><span><i class="fa-solid fa-arrow-right"></i>Solicitar</span></button>
             </div>
-            <div class="card-lobby">
-
-                <div class="card-lobby-header">
-                    <div class="card-lobby-media-elo silver">
-                        <img src="./assets/elos-images/Silver_1_Rank.png" alt="">
-                    </div>
-                    <div class="card-lobby-nome">Time Matuto</div>
-
-                </div>
-
-                <div class="card-lobby-players">
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo bronze">
-                            <img src="./assets/elos-images/Bronze_1_Rank.png" alt="">
-                        </div>
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo silver">
-                            <img src="./assets/elos-images/Silver_1_Rank.png" alt="">
-                        </div>
-
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo gold">
-                            <img src="./assets/elos-images/Gold_1_Rank.png" alt="">
-                        </div>
-
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo platinum">
-                            <img src="./assets/elos-images/Platinum_1_Rank.png" alt="">
-                        </div>
 
 
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo diamond">
-                            <img src="./assets/elos-images/Diamond_1_Rank.png" alt="">
-                        </div>
-
-                    </div>
-                </div>
-                <button class="card-lobby-button"><span><i class="fa-solid fa-arrow-right"></i>Entrar</span></button>
-            </div>
-            <div class="card-lobby">
-
-                <div class="card-lobby-header">
-                    <div class="card-lobby-media-elo silver">
-                        <img src="./assets/elos-images/Silver_1_Rank.png" alt="">
-                    </div>
-                    <div class="card-lobby-nome">Time Matuto</div>
-
-                </div>
-
-                <div class="card-lobby-players">
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo bronze">
-                            <img src="./assets/elos-images/Bronze_1_Rank.png" alt="">
-                        </div>
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo silver">
-                            <img src="./assets/elos-images/Silver_1_Rank.png" alt="">
-                        </div>
-
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo gold">
-                            <img src="./assets/elos-images/Gold_1_Rank.png" alt="">
-                        </div>
-
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo platinum">
-                            <img src="./assets/elos-images/Platinum_1_Rank.png" alt="">
-                        </div>
-
-
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo diamond">
-                            <img src="./assets/elos-images/Diamond_1_Rank.png" alt="">
-                        </div>
-
-                    </div>
-                </div>
-                <button class="card-lobby-button"><span><i class="fa-solid fa-arrow-right"></i>Entrar</span></button>
-            </div>
-            <div class="card-lobby">
-
-                <div class="card-lobby-header">
-                    <div class="card-lobby-media-elo silver">
-                        <img src="./assets/elos-images/Silver_1_Rank.png" alt="">
-                    </div>
-                    <div class="card-lobby-nome">Time Matuto</div>
-
-                </div>
-
-                <div class="card-lobby-players">
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo bronze">
-                            <img src="./assets/elos-images/Bronze_1_Rank.png" alt="">
-                        </div>
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo silver">
-                            <img src="./assets/elos-images/Silver_1_Rank.png" alt="">
-                        </div>
-
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo gold">
-                            <img src="./assets/elos-images/Gold_1_Rank.png" alt="">
-                        </div>
-
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo platinum">
-                            <img src="./assets/elos-images/Platinum_1_Rank.png" alt="">
-                        </div>
-
-
-                    </div>
-                    <div class="card-lobby-players-player">
-                        <div class="perfil">
-                            <img src="./assets/perfil-teste.jpg" alt="">
-                        </div>
-                        <div class="elo diamond">
-                            <img src="./assets/elos-images/Diamond_1_Rank.png" alt="">
-                        </div>
-
-                    </div>
-                </div>
-                <button class="card-lobby-button"><span><i class="fa-solid fa-arrow-right"></i>Entrar</span></button>
-            </div>
         </div>
 
 
