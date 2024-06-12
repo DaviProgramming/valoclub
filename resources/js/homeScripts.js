@@ -5,26 +5,36 @@ $.ajaxSetup({
 });
 
 const createListeners = () => {
+    const logoutButton = document.querySelector(
+        ".aside-component-content-footer .logout"
+    );
 
-    const notifiacoesNavbar = document.querySelector('.notificacoes-header');
+    if (logoutButton != null) {
 
-    notifiacoesNavbar.addEventListener('click', (e) => {
+        logoutButton.addEventListener("click", () => {
+            asideActions.logout();
+        });
 
-        e.preventDefault();
+    }
 
-        notificacoesActions.toggle();
+    const notifiacoesNavbar = document.querySelectorAll(".notificacoes-header");
 
-    })
+    notifiacoesNavbar.forEach((navbar) => {
+        navbar.addEventListener("click", (e) => {
+            e.preventDefault();
 
-    const notificacoesBody = document.querySelector('.notificacoes-body');
+            notificacoesActions.toggle();
+        });
+    });
 
+    const notificacoesBody = document.querySelector(".notificacoes-body");
 
-    notificacoesBody.addEventListener('mouseleave', (e) => {
+    if(notificacoesBody != null){
 
-
-        notificacoesActions.close();
-
-    })
+        notificacoesBody.addEventListener("mouseleave", (e) => {
+            notificacoesActions.close();
+        });
+    }
 
 
 
@@ -121,73 +131,63 @@ const createListeners = () => {
     }
 };
 
-
 const notificacoesActions = {
+    toggle() {
+        let bodyNotificacoes = document.querySelector(".notificacoes-body");
 
-    toggle(){
-
-
-        let bodyNotificacoes = document.querySelector('.notificacoes-body');
-
-        bodyNotificacoes.classList.toggle('hide-content')
-
-
-
+        bodyNotificacoes.classList.toggle("hide-content");
     },
 
-    close(){
+    close() {
+        console.log("chamou");
+        let bodyNotificacoes = document.querySelector(".notificacoes-body");
 
-
-        console.log('chamou')
-        let bodyNotificacoes = document.querySelector('.notificacoes-body');
-
-        if(!bodyNotificacoes.classList.contains('hide-content')){
-            bodyNotificacoes.classList.add('hide-content')
+        if (!bodyNotificacoes.classList.contains("hide-content")) {
+            bodyNotificacoes.classList.add("hide-content");
         }
-
-    }
-
-
-}
+    },
+};
 
 const asideActions = {
+    logout() {
+        $.ajax({
+            url: "/evento/logout",
+            type: "POST",
+            contentType: false,
+            processData: false,
+            success: (response) => {
+                console.log(response);
+            },
+        });
+    },
 
     openAside(click) {
         let aside = document.querySelector("aside");
-        let body = document.querySelector('body');
+        let body = document.querySelector("body");
 
         if (aside.classList.contains("hide-content")) {
             aside.classList.remove("hide-content");
         }
 
-        if(!body.classList.contains('modal-open')){
-
-            body.classList.add('modal-open');
-
-
-
+        if (!body.classList.contains("modal-open")) {
+            body.classList.add("modal-open");
         }
     },
 
     closeAside(componenteClicado) {
         if (componenteClicado.classList.contains("aside-component")) {
-
             let aside = document.querySelector("aside");
 
-            let body = document.querySelector('body');
+            let body = document.querySelector("body");
 
-            if(!aside.classList.contains('hide-content')){
-
-                aside.classList.add('hide-content');
-
+            if (!aside.classList.contains("hide-content")) {
+                aside.classList.add("hide-content");
             }
 
-            if(body.classList.contains('modal-open')){
+            if (body.classList.contains("modal-open")) {
+                body.classList.remove("modal-open");
 
-                body.classList.remove('modal-open');
-
-                body.style = ''
-
+                body.style = "";
             }
         }
     },

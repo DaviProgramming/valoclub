@@ -44,7 +44,7 @@
         </div>
         <div class="perfil" >
             <div class="perfil-image">
-                <img src="./assets/perfil-teste.jpg" alt="">
+                <img src="{{auth()->user()->imagem_url}}" alt="">
             </div>
             <span>{{auth()->user()->nome}}</span>
         </div>
@@ -67,7 +67,7 @@
     </div>
     <div class="user-actions">
         <div class="notificacoes">
-            <i class="fa fa-bell" data-notificacoes="5"></i>
+            <i class="fa fa-bell" data-notificacoes="0"></i>
             <span>Notificações</span>
         </div>
 

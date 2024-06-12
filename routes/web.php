@@ -6,10 +6,24 @@ use App\Models\User;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+
+Route::get('/meu-perfil', function (Illuminate\Http\Request $request) {
+
+    $user = Auth::user();
+
+    if ($user) {
+
+        return view('pages.perfil');
+    } else {
+
+        return view('home');
+    }
+})->name('perfil');
 
 
 Route::post('/evento/cadastro', function (Illuminate\Http\Request $request) {
+
     $dados = $request->all();
 
     $email = $dados['email'];
@@ -60,7 +74,7 @@ Route::post('/evento/cadastro', function (Illuminate\Http\Request $request) {
 
         return response()->json(['success' => false, 'error' => $e->getMessage()]);
     }
-});
+})->name('evento.cadastro');
 
 Route::post('/evento/login', function (Illuminate\Http\Request $request) {
 
@@ -82,10 +96,27 @@ Route::post('/evento/login', function (Illuminate\Http\Request $request) {
         Auth::login($user);
 
         return response()->json(['success' => true, 'user' => $user]);
-    }else{
+    } else {
 
         return response()->json(['success' => false, 'error' => 'usuario nao encontrado']);
+    }
+})->name('evento.login');
 
 
+Route::post('/evento/logout', function (Illuminate\Http\Request $request) {
+
+    $dados = $request->all();
+
+    $user = Auth::user();
+
+    if ($user) {
+
+
+        return response()->json(['success' => true, 'message' => 'Usuario deslogado']);
+
+
+    } else {
+
+        return response()->json(['success' => false, 'message' => 'o usuario nao está logado']);
     }
 });
