@@ -4,6 +4,8 @@
 @import "./components/navbar";
 @import "./components/modal-login";
 @import "./components/footer";
+@import "./components/aside";
+
 @import "./pages/home";
 
 body{
@@ -16,6 +18,14 @@ margin: 0;
 width: 100%;
 position: relative;
 overflow-x: hidden;
+
+
+&.modal-open{
+
+    overflow: hidden!important;
+    padding-right: 17px;
+
+}
 
 
 &::after{

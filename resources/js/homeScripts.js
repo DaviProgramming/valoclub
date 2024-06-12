@@ -5,6 +5,21 @@ $.ajaxSetup({
 });
 
 const createListeners = () => {
+    const menuButton = document.querySelector(".hamburguer-menu");
+
+    menuButton.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        asideActions.openAside(e.target);
+    });
+
+    const asideBody = document.querySelector(".aside-component");
+    asideBody.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        asideActions.closeAside(e.target);
+    });
+
     const buttonUploadImagem = document.querySelector(".select-image");
     const inputUploadImagem = document.querySelector("#file-cadastro");
 
@@ -81,6 +96,49 @@ const createListeners = () => {
             formActions.changesInput(input);
         });
     }
+};
+
+const asideActions = {
+
+    openAside(click) {
+        let aside = document.querySelector("aside");
+        let body = document.querySelector('body');
+
+        if (aside.classList.contains("hide-content")) {
+            aside.classList.remove("hide-content");
+        }
+
+        if(!body.classList.contains('modal-open')){
+
+            body.classList.add('modal-open');
+
+
+
+        }
+    },
+
+    closeAside(componenteClicado) {
+        if (componenteClicado.classList.contains("aside-component")) {
+
+            let aside = document.querySelector("aside");
+
+            let body = document.querySelector('body');
+
+            if(!aside.classList.contains('hide-content')){
+
+                aside.classList.add('hide-content');
+
+            }
+
+            if(body.classList.contains('modal-open')){
+
+                body.classList.remove('modal-open');
+
+                body.style = ''
+
+            }
+        }
+    },
 };
 
 const dropdownActions = {
@@ -545,10 +603,8 @@ const formActions = {
                 componentsComLoading.classList.remove("hide-content");
             }
 
-            if(loading.classList.contains('hide-content')){
-
-                loading.classList.remove('hide-content');
-
+            if (loading.classList.contains("hide-content")) {
+                loading.classList.remove("hide-content");
             }
 
             $.ajax({
@@ -558,7 +614,6 @@ const formActions = {
                 contentType: false,
                 processData: false,
                 success: (response) => {
-
                     console.log(response);
 
                     if (response.success) {
@@ -571,23 +626,16 @@ const formActions = {
                         ) {
                             successComponent.classList.remove("hide-content");
                         }
-
-
-
-
-
-                    }else{
-
+                    } else {
                         console.log(response);
-
                     }
                 },
 
-                error: function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     console.error(xhr.responseText); // Saída do erro em console para depuração
-                    console.log(status)
+                    console.log(status);
                     console.log(error);
-                }
+                },
             });
         }
     },

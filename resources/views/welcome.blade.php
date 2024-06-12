@@ -13,6 +13,7 @@
 @section('content')
 
     @include('./components/navbar')
+    @include('./components/aside')
 
     <section class="container">
 
