@@ -120,6 +120,125 @@
                         background-color: transparent !important;
                     }
                 }
+
+                .custom-multiple-choice{
+                    position: relative;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+
+
+                    &-btn{
+                            border: 2px solid $white-color;
+                            padding: 5px 10px;
+                            border-radius: 6px;
+                            font-size: .875rem;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            gap: 10px;
+                            cursor: pointer;
+
+                            div{
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+                                gap: 6px;
+
+                                img{
+                                    height: 15px;
+                                }
+                            }
+
+                    }
+
+
+                    &-body{
+
+                        position: absolute;
+                        top: 40px;
+                        background: $secondary-color;
+                        width: 100%;
+                        z-index: 6;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 2px;
+                        border-radius: 6px;
+                        box-shadow: 0px 10px 40px #191919;
+
+                        &-item{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            gap: 10px;
+                            padding: 10px 20px;
+                            border-radius: 6px;
+                            overflow: hidden;
+                            position: relative;
+                            cursor: pointer;
+
+                            &:hover{
+
+                                box-shadow: 0 0 65px $orange-color inset;
+
+                                transition: 0.2s ease;
+
+                            }
+
+
+                            &-checkbox{
+                                height: 25px;
+                                width: 25px;
+                                border: 2px solid $white-color;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                border-radius: 5px;
+                                transition: all .2s;
+
+                                i{
+                                    transform: scale(0);
+                                    transition: all .2s;
+                                }
+
+                                &.checked{
+
+                                    i{
+                                        transform: scale(0.9);
+                                        color: $orange-color;
+                                    }
+
+                                }
+                            }
+
+                            &:not(:last-child):after{
+
+                                content: '';
+                                position: absolute;
+                                bottom: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 1px;
+                                background: rgba(255, 255, 255, 0.329);
+
+                            }
+                            img{
+                                width: 25px;
+                            }
+
+
+                            &-info{
+                                display: flex;
+                                flex-direction: row;
+                                gap: 5px;
+                                align-items: center
+
+                            }
+                        }
+
+                    }
+                }
             }
 
            @import "./input-file-custom";

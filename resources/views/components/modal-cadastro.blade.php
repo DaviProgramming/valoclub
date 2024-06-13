@@ -68,10 +68,66 @@
                         </div>
                     </div>
 
+                    <div class="custom-multiple-choice cadastro">
+                        <div class="custom-multiple-choice-btn">
+
+                            <i class="fa-solid fa-chevron-down"></i>
+                            <div class="functions-selected">Selecione até 3 funções</div>
+
+                        </div>
+                        <div class="custom-multiple-choice-body hide-content">
+
+                            <div class="custom-multiple-choice-body-item controlador" >
+                                <span class="custom-multiple-choice-body-item-checkbox">
+                                    <i class="fa-solid fa-check"></i>
+                                </span>
+                                <div class="custom-multiple-choice-body-item-info">
+                                    <img class="custom-multiple-choice-body-item-info-image" src="assets/roles-images/controlador.png" alt="controlador.png">
+                                    <span class="custom-multiple-choice-body-item-info-text">Controlador</span>
+                                </div>
+                            </div>
+
+                            <div class="custom-multiple-choice-body-item duelista">
+                                <span class="custom-multiple-choice-body-item-checkbox">
+                                    <i class="fa-solid fa-check"></i>
+                                </span>
+                                <div class="custom-multiple-choice-body-item-info">
+                                    <img class="custom-multiple-choice-body-item-info-image" src="assets/roles-images/duelista.png" alt="duelista.png">
+                                    <span class="custom-multiple-choice-body-item-info-text">Duelista</span>
+                                </div>
+                            </div>
+
+                            <div class="custom-multiple-choice-body-item iniciador">
+                                <span class="custom-multiple-choice-body-item-checkbox">
+                                    <i class="fa-solid fa-check"></i>
+                                </span>
+                                <div class="custom-multiple-choice-body-item-info">
+                                    <img class="custom-multiple-choice-body-item-info-image" src="assets/roles-images/iniciador.png" alt="iniciador.png">
+                                    <span class="custom-multiple-choice-body-item-info-text">Iniciador</span>
+                                </div>
+                            </div>
+
+                            <div class="custom-multiple-choice-body-item sentinela">
+                                <span class="custom-multiple-choice-body-item-checkbox">
+                                    <i class="fa-solid fa-check"></i>
+                                </span>
+                                <div class="custom-multiple-choice-body-item-info">
+                                    <img class="custom-multiple-choice-body-item-info-image" src="assets/roles-images/sentinela.png" alt="sentinela.png">
+                                    <span class="custom-multiple-choice-body-item-info-text">Sentinela</span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
                     {{-- <div class="">
                         <label for="formFileSm" class="form-label">Imagem Perfil</label>
                         <input class="form-control form-control-sm" id="formFileSm" type="file">
                     </div> --}}
+
+
+
 
 
                     <div class="container-upload-image">

@@ -5,16 +5,36 @@ $.ajaxSetup({
 });
 
 const createListeners = () => {
+    const checkBoxHeader = document.querySelectorAll(
+        ".custom-multiple-choice.cadastro"
+    );
+
+    checkBoxHeader.forEach((checkBoxBtn) => {
+        let openBody = checkBoxBtn.querySelector(".custom-multiple-choice-btn");
+
+        let allCheckBoxs = checkBoxBtn.querySelectorAll(
+            ".custom-multiple-choice-body-item"
+        );
+
+        allCheckBoxs.forEach((checkbox) => {
+            checkbox.addEventListener("click", (e) => {
+                checkboxActions.clickCheckBox(e.target);
+            });
+        });
+
+        openBody.addEventListener("click", (e) => {
+            checkboxActions.openBody(e.target);
+        });
+    });
+
     const logoutButton = document.querySelector(
         ".aside-component-content-footer .logout"
     );
 
     if (logoutButton != null) {
-
         logoutButton.addEventListener("click", () => {
             asideActions.logout();
         });
-
     }
 
     const notifiacoesNavbar = document.querySelectorAll(".notificacoes-header");
@@ -29,14 +49,11 @@ const createListeners = () => {
 
     const notificacoesBody = document.querySelector(".notificacoes-body");
 
-    if(notificacoesBody != null){
-
+    if (notificacoesBody != null) {
         notificacoesBody.addEventListener("mouseleave", (e) => {
             notificacoesActions.close();
         });
     }
-
-
 
     const menuButton = document.querySelector(".hamburguer-menu");
 
@@ -131,6 +148,162 @@ const createListeners = () => {
     }
 };
 
+const checkboxActions = {
+    funcoesSelecionadas: [],
+
+    clickCheckBox(elementoClicado) {
+        let divPai = null;
+
+        console.log(elementoClicado);
+
+        if (
+            elementoClicado.classList.contains(
+                "custom-multiple-choice-body-item"
+            )
+        ) {
+            divPai = elementoClicado;
+        } else if (
+            elementoClicado.classList.contains(
+                "custom-multiple-choice-body-item-info-text"
+            )
+        ) {
+            divPai = elementoClicado.parentNode.parentNode;
+        } else if (
+            elementoClicado.classList.contains(
+                "custom-multiple-choice-body-item-info-image"
+            )
+        ) {
+            divPai = elementoClicado.parentNode.parentNode;
+        } else if (
+            elementoClicado.classList.contains(
+                "custom-multiple-choice-body-item-checkbox"
+            )
+        ) {
+            divPai = elementoClicado.parentNode;
+        }
+
+        let checkBox = divPai.querySelector(
+            ".custom-multiple-choice-body-item-checkbox"
+        );
+
+        checkBox.classList.toggle("checked");
+
+        this.funcoesSelecionadas.push(divPai.classList[1]);
+
+        this.verificaQuantosMarcados(divPai.parentNode, divPai);
+
+
+    },
+
+    verificaQuantosMarcados(divPai, elementoClicado) {
+
+
+        let allCheckBoxs = divPai.querySelectorAll(".custom-multiple-choice-body-item-checkbox.checked");
+
+        if (allCheckBoxs.length >= 4) {
+
+            let primeiroItemClicado = this.funcoesSelecionadas[0];
+
+            let testeQuery = divPai.querySelector("." + primeiroItemClicado + " .checked");
+
+            testeQuery.classList.remove('checked');
+
+            let arraySemPrimeiroElemento = this.funcoesSelecionadas.filter(
+                function (element) {
+                    return element !== primeiroItemClicado;
+                }
+            );
+
+            this.funcoesSelecionadas = arraySemPrimeiroElemento;
+
+        }
+
+        allCheckBoxs = divPai.querySelectorAll(".custom-multiple-choice-body-item-checkbox.checked");
+
+
+        let spanFunction = document.querySelector('.custom-multiple-choice-btn div');
+
+        let allSelected = '';
+
+        if(allCheckBoxs.length >= 1){
+
+            allCheckBoxs.forEach(checkbox => {
+
+                let checkBoxFather =  checkbox.parentNode;
+
+                let imageSource = '';
+
+
+                if(checkBoxFather.classList[1] == 'controlador'){
+
+                     imageSource = '<img src="assets/roles-images/controlador.png" alt="controlador"> ';
+
+                }
+
+                else if(checkBoxFather.classList[1] == 'iniciador'){
+
+                 imageSource = '<img src="assets/roles-images/iniciador.png" alt="iniciador"> ';
+
+                }
+
+                else if(checkBoxFather.classList[1] == 'duelista'){
+
+                 imageSource = '<img src="assets/roles-images/duelista.png" alt="duelista"> ';
+
+                }
+
+                else if(checkBoxFather.classList[1] == 'sentinela'){
+
+                 imageSource = '<img src="assets/roles-images/sentinela.png" alt="sentinela"> ';
+
+                }
+
+
+                 allSelected += "<div class='function-selected'> " + imageSource + " <span class='function-selected-span'> " + checkBoxFather.classList[1] + '</span>' + '</div>';
+
+
+             })
+
+        }else{
+
+
+            allSelected += "<div class='function-selected'><span class='function-selected-span'>Selecione até 3 funções</span></div>";
+
+
+
+        }
+
+
+
+        spanFunction.innerHTML = allSelected;
+
+
+
+    },
+
+    openBody(elemento) {
+
+        let fatherElemento = elemento.parentNode;
+
+        console.log(fatherElemento);
+
+        if (fatherElemento.classList.contains("custom-multiple-choice-btn")) {
+            fatherElemento = fatherElemento.parentNode;
+
+        }else if(fatherElemento.classList.contains('function-selected')){
+
+            fatherElemento = fatherElemento.parentNode.parentNode.parentNode;
+
+        }
+
+        let bodyContainer = fatherElemento.querySelector(
+            ".custom-multiple-choice-body"
+        );
+
+        bodyContainer.classList.toggle("hide-content");
+    },
+};
+
 const notificacoesActions = {
     toggle() {
         let bodyNotificacoes = document.querySelector(".notificacoes-body");
@@ -139,7 +312,6 @@ const notificacoesActions = {
     },
 
     close() {
-        console.log("chamou");
         let bodyNotificacoes = document.querySelector(".notificacoes-body");
 
         if (!bodyNotificacoes.classList.contains("hide-content")) {
@@ -156,17 +328,11 @@ const asideActions = {
             contentType: false,
             processData: false,
             success: (response) => {
-
-                if(response.success == true){
-
+                if (response.success == true) {
                     window.location.reload();
-
-                }else{
-
+                } else {
                     window.location.reload();
-
                 }
-
             },
         });
     },
@@ -642,16 +808,12 @@ const formActions = {
         }
 
         if (errosContadosLogin == 0) {
-            console.log("to aqui");
-
             let formData = new FormData();
 
             formData.append("email", inputEmail.value);
             formData.append("senha", inputSenha.value);
 
             let divPai = button.parentNode.parentNode;
-
-            console.log(divPai);
 
             let componentsComLoading =
                 divPai.querySelector(".loading-component");
@@ -661,7 +823,7 @@ const formActions = {
             let errorComponent =
                 componentsComLoading.querySelector(".error-icon");
 
-            let spanError = componentsComLoading.querySelector('.error-info');
+            let spanError = componentsComLoading.querySelector(".error-info");
 
             if (componentsComLoading.classList.contains("hide-content")) {
                 componentsComLoading.classList.remove("hide-content");
@@ -678,9 +840,6 @@ const formActions = {
                 contentType: false,
                 processData: false,
                 success: (response) => {
-
-                    console.log(response);
-
                     if (response.success) {
                         if (!loading.classList.contains("hide-content")) {
                             loading.classList.add("hide-content");
@@ -693,82 +852,64 @@ const formActions = {
                         }
 
                         setTimeout(() => {
-
                             window.location.reload();
-
-                        },2000)
+                        }, 2000);
                     } else {
-
                         spanError.innerHTML = response.error;
-
 
                         if (!loading.classList.contains("hide-content")) {
                             loading.classList.add("hide-content");
                         }
 
-                        if(errorComponent.classList.contains('hide-content')){
-                            errorComponent.classList.remove('hide-content');
+                        if (errorComponent.classList.contains("hide-content")) {
+                            errorComponent.classList.remove("hide-content");
                         }
 
                         setTimeout(() => {
-
-                            if(!componentsComLoading.classList.contains('hide-content')){
-                                componentsComLoading.classList.add('hide-content');
+                            if (
+                                !componentsComLoading.classList.contains(
+                                    "hide-content"
+                                )
+                            ) {
+                                componentsComLoading.classList.add(
+                                    "hide-content"
+                                );
                             }
 
-                            if(!errorComponent.classList.contains('hide-content')){
-                                errorComponent.classList.add('hide-content');
+                            if (
+                                !errorComponent.classList.contains(
+                                    "hide-content"
+                                )
+                            ) {
+                                errorComponent.classList.add("hide-content");
                             }
-
-
-
-
-                        }, 2000)
+                        }, 2000);
                     }
                 },
 
-                error: function (xhr, status, error) {
-                    console.error(xhr.responseText); // Saída do erro em console para depuração
-                    console.log(status);
-                    console.log(error);
-                },
+                error: function (xhr, status, error) {},
             });
         }
     },
 
     changesInput(input) {
-
         let fatherDiv = input.parentNode;
 
-        if(!fatherDiv.classList.contains('container-upload-image')){
+        if (!fatherDiv.classList.contains("container-upload-image")) {
+            let spans = fatherDiv.querySelectorAll("span");
 
-            let spans = fatherDiv.querySelectorAll('span');
-
-            var filteredSpans = Array.from(spans).filter(function(span) {
-                return !span.classList.contains('eye-span');
+            var filteredSpans = Array.from(spans).filter(function (span) {
+                return !span.classList.contains("eye-span");
             });
 
-
-            filteredSpans.forEach(span => {
-
-                span.addEventListener('click', (e) => {
-
-
-                    let inputCalled = fatherDiv.querySelector('input');
-
+            filteredSpans.forEach((span) => {
+                span.addEventListener("click", (e) => {
+                    let inputCalled = fatherDiv.querySelector("input");
 
                     inputCalled.focus();
-
-
-
-                })
-
-            })
-
-
+                });
+            });
         }
-
-
 
         input.addEventListener("click", (e) => {
             let inputClicado = e.target;
