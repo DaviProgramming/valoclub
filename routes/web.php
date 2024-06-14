@@ -8,17 +8,20 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/meu-perfil', function (Illuminate\Http\Request $request) {
+Route::get('/meu-perfil', function () {
 
     $user = Auth::user();
 
     if ($user) {
 
         return view('pages.perfil');
+
     } else {
 
         return view('home');
     }
+
+
 })->name('perfil');
 
 

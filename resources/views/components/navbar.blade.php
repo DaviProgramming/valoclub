@@ -72,7 +72,7 @@
                 <img src="./assets/user.png" alt="">
 
             </div>
-            <span>Perfil</span>
+            <span>Entre na sua conta</span>
 
         </div>
         <div class="hamburguer-menu">

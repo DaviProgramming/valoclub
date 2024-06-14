@@ -91,7 +91,18 @@
 
 
 
+                    @auth
+
                     <button class="card-lobby-button"><span><i class="fa-solid fa-arrow-right"></i>Solicitar</span></button>
+
+
+                    @endauth
+
+                    @guest
+
+                    <button disabled class="card-lobby-button deslogado"><span><i class="fa-solid fa-lock"></i> Necessario está logado</span></button>
+
+                    @endguest
                 </div>
                 <div class="card-lobby">
 
@@ -126,7 +137,18 @@
 
 
 
+                    @auth
+
                     <button class="card-lobby-button"><span><i class="fa-solid fa-arrow-right"></i>Solicitar</span></button>
+
+
+                    @endauth
+
+                    @guest
+
+                    <button disabled class="card-lobby-button deslogado"><span><i class="fa-solid fa-lock"></i> Necessario está logado</span></button>
+
+                    @endguest
                 </div>
                 <div class="card-lobby">
 
@@ -160,8 +182,18 @@
                     </div>
 
 
+                    @auth
 
                     <button class="card-lobby-button"><span><i class="fa-solid fa-arrow-right"></i>Solicitar</span></button>
+
+
+                    @endauth
+
+                    @guest
+
+                    <button disabled class="card-lobby-button deslogado"><span><i class="fa-solid fa-lock"></i> Necessario está logado</span></button>
+
+                    @endguest
                 </div>
 
 

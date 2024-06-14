@@ -1,4 +1,5 @@
 <div class="modal fade modal-login" id="modalCadastro" tabindex="-1" aria-hidden="true">
+
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -53,7 +54,7 @@
                     <div class="dropdown select-elo create-account">
                         <div class="dropdown-header">
                             <i class="fa-solid fa-chevron-down"></i>
-                            <span data-elo-id-selected="0">Selecione seu elo</span>
+                            <span data-elo-id-selected="0"> Selecione seu elo</span>
                         </div>
                         <div class="dropdown-body">
                             <div class="dropdown-body-option" data-elo-id="1">Ferro</div>
@@ -69,12 +70,12 @@
                     </div>
 
                     <span class="error-message hide-content" id="span-selecione-elo-cadastro-error"><i
-                        class="fa-solid fa-circle-exclamation"></i>Selecione seu elo</span>
+                        class="fa-solid fa-circle-exclamation"></i> Selecione seu elo</span>
 
                     <div class="custom-multiple-choice cadastro">
                         <div class="custom-multiple-choice-btn">
                             <i class="fa-solid fa-chevron-down"></i>
-                            <div class="functions-selected">Selecione até 3 funções</div>
+                            <div class="functions-selected"> Selecione até 3 funções</div>
                         </div>
                         <div class="custom-multiple-choice-body hide-content">
 
@@ -123,7 +124,7 @@
                     </div>
 
                     <span class="error-message hide-content" id="span-selecione-funcao-cadastro-error"><i
-                        class="fa-solid fa-circle-exclamation"></i>Selecione pelo menos 1 função</span>
+                        class="fa-solid fa-circle-exclamation"></i> Selecione pelo menos 1 função</span>
 
 
                     <div class="container-upload-image">

@@ -2,10 +2,9 @@
 
     <div class="aside-component-content">
 
-
         @auth
 
-        <div class="aside-component-content-header">
+        <a href="/meu-perfil" class="aside-component-content-header" >
 
             <div class="aside-component-content-header-profile">
                 <img class="aside-component-content-header-profile-image logado" src="{{auth()->user()->imagem_url}}" alt="">
@@ -14,7 +13,7 @@
                 <span>Meu perfil</span>
             </div>
 
-        </div>
+        </a>
 
         @endauth
 
@@ -40,6 +39,7 @@
             @auth
 
             <div class="aside-component-content-body-item"><div class="aside-component-content-body-item-icon"><i class="fa-solid fa-plus"></i></div><span> Criar Solicitação</span></div>
+            <div class="aside-component-content-body-item"><div class="aside-component-content-body-item-icon"><i class="fa-solid fa-clipboard-list"></i></div><span> Solicitações</span></div>
 
 
             @endauth

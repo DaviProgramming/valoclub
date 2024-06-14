@@ -150,6 +150,46 @@
             }
         }
 
+        &.deslogado{
+
+            background: rgb(3, 3, 43);
+            font-size: 16px;
+            cursor: default;
+
+            &:hover{
+
+
+                &::before{
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background: #240086;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 6px;
+                    animation: 0.3s animationButtonDeslogado;
+
+                }
+
+                @keyframes animationButtonDeslogado {
+
+                    from{
+                        opacity: 0;
+                    }
+
+                    to{
+                        opacity: 1;
+
+                    }
+
+                }
+            }
+
+
+
+        }
+
     }
 
     img {

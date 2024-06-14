@@ -149,7 +149,6 @@ const createListeners = () => {
 };
 
 const checkboxActions = {
-
     funcoesSelecionadas: [],
 
     clickCheckBox(elementoClicado) {
@@ -192,22 +191,21 @@ const checkboxActions = {
         this.funcoesSelecionadas.push(divPai.classList[1]);
 
         this.verificaQuantosMarcados(divPai.parentNode);
-
-
     },
 
     verificaQuantosMarcados(divPai) {
-
-
-        let allCheckBoxs = divPai.querySelectorAll(".custom-multiple-choice-body-item-checkbox.checked");
+        let allCheckBoxs = divPai.querySelectorAll(
+            ".custom-multiple-choice-body-item-checkbox.checked"
+        );
 
         if (allCheckBoxs.length >= 4) {
-
             let primeiroItemClicado = this.funcoesSelecionadas[0];
 
-            let testeQuery = divPai.querySelector("." + primeiroItemClicado + " .checked");
+            let testeQuery = divPai.querySelector(
+                "." + primeiroItemClicado + " .checked"
+            );
 
-            testeQuery.classList.remove('checked');
+            testeQuery.classList.remove("checked");
 
             let arraySemPrimeiroElemento = this.funcoesSelecionadas.filter(
                 function (element) {
@@ -220,85 +218,63 @@ const checkboxActions = {
             this.funcoesSelecionadas = arraySemPrimeiroElemento;
 
             console.log(this.funcoesSelecionadas);
-
         }
 
-        allCheckBoxs = divPai.querySelectorAll(".custom-multiple-choice-body-item-checkbox.checked");
+        allCheckBoxs = divPai.querySelectorAll(
+            ".custom-multiple-choice-body-item-checkbox.checked"
+        );
 
+        let spanFunction = document.querySelector(
+            ".custom-multiple-choice-btn div"
+        );
 
-        let spanFunction = document.querySelector('.custom-multiple-choice-btn div');
+        let allSelected = "";
 
-        let allSelected = '';
+        if (allCheckBoxs.length >= 1) {
+            allCheckBoxs.forEach((checkbox) => {
+                let checkBoxFather = checkbox.parentNode;
 
-        if(allCheckBoxs.length >= 1){
+                let imageSource = "";
 
-            allCheckBoxs.forEach(checkbox => {
-
-                let checkBoxFather =  checkbox.parentNode;
-
-                let imageSource = '';
-
-
-                if(checkBoxFather.classList[1] == 'controlador'){
-
-                     imageSource = '<img src="assets/roles-images/controlador.png" alt="controlador"> ';
-
+                if (checkBoxFather.classList[1] == "controlador") {
+                    imageSource =
+                        '<img src="assets/roles-images/controlador.png" alt="controlador"> ';
+                } else if (checkBoxFather.classList[1] == "iniciador") {
+                    imageSource =
+                        '<img src="assets/roles-images/iniciador.png" alt="iniciador"> ';
+                } else if (checkBoxFather.classList[1] == "duelista") {
+                    imageSource =
+                        '<img src="assets/roles-images/duelista.png" alt="duelista"> ';
+                } else if (checkBoxFather.classList[1] == "sentinela") {
+                    imageSource =
+                        '<img src="assets/roles-images/sentinela.png" alt="sentinela"> ';
                 }
 
-                else if(checkBoxFather.classList[1] == 'iniciador'){
-
-                 imageSource = '<img src="assets/roles-images/iniciador.png" alt="iniciador"> ';
-
-                }
-
-                else if(checkBoxFather.classList[1] == 'duelista'){
-
-                 imageSource = '<img src="assets/roles-images/duelista.png" alt="duelista"> ';
-
-                }
-
-                else if(checkBoxFather.classList[1] == 'sentinela'){
-
-                 imageSource = '<img src="assets/roles-images/sentinela.png" alt="sentinela"> ';
-
-                }
-
-
-                 allSelected += "<div class='function-selected'> " + imageSource + " <span class='function-selected-span'> " + checkBoxFather.classList[1] + '</span>' + '</div>';
-
-
-             })
-
-        }else{
-
-
-            allSelected += "<div class='function-selected'><span class='function-selected-span'>Selecione até 3 funções</span></div>";
-
-
-
+                allSelected +=
+                    "<div class='function-selected'> " +
+                    imageSource +
+                    " <span class='function-selected-span'> " +
+                    checkBoxFather.classList[1] +
+                    "</span>" +
+                    "</div>";
+            });
+        } else {
+            allSelected +=
+                "<div class='function-selected'><span class='function-selected-span'>Selecione até 3 funções</span></div>";
         }
-
-
 
         spanFunction.innerHTML = allSelected;
-
-
-
     },
 
     openBody(elemento) {
-
         let fatherElemento = elemento.parentNode;
 
         console.log(fatherElemento);
 
         if (fatherElemento.classList.contains("custom-multiple-choice-btn")) {
             fatherElemento = fatherElemento.parentNode;
-
-        }else if(fatherElemento.classList.contains('function-selected')){
-
+        } else if (fatherElemento.classList.contains("function-selected")) {
             fatherElemento = fatherElemento.parentNode.parentNode.parentNode;
-
         }
 
         let bodyContainer = fatherElemento.querySelector(
@@ -458,7 +434,6 @@ const validations = {
 };
 
 const formActions = {
-
     insereImagemPrevia(imagem) {
         let imgArea = document.querySelector(".img-area");
 
@@ -517,13 +492,26 @@ const formActions = {
 
     clickButtonCriarConta(button) {
 
-        console.log(checkboxActions.funcoesSelecionadas);
 
-        if(checkboxActions.funcoesSelecionadas.length > 3){
+        let allCheckBoxs = document.querySelectorAll(
+            "#modalCadastro .custom-multiple-choice-body-item-checkbox.checked"
+        );
 
-            let arraySemDuplicados = checkboxActions.funcoesSelecionadas.filter((item, index) => {
-                return checkboxActions.funcoesSelecionadas.indexOf(item) === index;
-            });
+        if(allCheckBoxs.length <= 0){
+
+
+            checkboxActions.funcoesSelecionadas = [];
+
+        }else{
+
+            let arraySemDuplicados = checkboxActions.funcoesSelecionadas.filter(
+                (item, index) => {
+                    return (
+                        checkboxActions.funcoesSelecionadas.indexOf(item) ===
+                        index
+                    );
+                }
+            );
 
             checkboxActions.funcoesSelecionadas = arraySemDuplicados;
 
@@ -551,6 +539,7 @@ const formActions = {
         let senhaInput = modalBodyContent.querySelector(
             'input[name="password-singup"]'
         );
+
         let spanSenhaError = modalBodyContent.querySelector(
             "span#span-senha-cadastro-error"
         );
@@ -558,10 +547,21 @@ const formActions = {
         let confirmaSenhaInput = modalBodyContent.querySelector(
             'input[name="confirm-password-singup"]'
         );
+
         let spanConfirmaSenhaError = modalBodyContent.querySelector(
             "span#span-confirma-senha-cadastro-error"
         );
 
+        let inputEloSelecionado = modalBodyContent.querySelector(
+            "[data-elo-id-selected]"
+        );
+        let spanEloSelecionado = modalBodyContent.querySelector(
+            "#span-selecione-elo-cadastro-error"
+        );
+
+        let spanRolesSelecionadas = modalBodyContent.querySelector(
+            "#span-selecione-funcao-cadastro-error"
+        );
 
         let eloSelected = modalBodyContent.querySelector(
             ".dropdown-header span"
@@ -676,17 +676,61 @@ const formActions = {
             }
         }
 
+
+        if(inputEloSelecionado.dataset.eloIdSelected == 0){
+
+            if(spanEloSelecionado.classList.contains('hide-content')){
+
+                spanEloSelecionado.classList.remove('hide-content');
+
+            }
+
+            errosContados++;
+
+        }else{
+
+            if(!spanEloSelecionado.classList.contains('hide-content')){
+
+                spanEloSelecionado.classList.add('hide-content');
+
+            }
+
+        }
+
+        if(checkboxActions.funcoesSelecionadas.length <= 0 ){
+
+            if(spanRolesSelecionadas.classList.contains('hide-content')){
+
+                spanRolesSelecionadas.classList.remove('hide-content')
+
+            }
+
+            errosContados++;
+
+
+        }else{
+
+            if(!spanRolesSelecionadas.classList.contains('hide-content')){
+
+                spanRolesSelecionadas.classList.add('hide-content')
+
+            }
+
+
+        }
+
         if (errosContados == 0) {
+
             let imagem = $("#file-cadastro")[0].files[0];
 
             let formData = new FormData();
 
             formData.append("imagem", imagem);
-            formData.append("email", emailInput.value);
+            formData.append("email",  emailInput.value.toLowerCase());
             formData.append("senha", senhaInput.value);
             formData.append("elo_id", eloSelected);
-            formData.append("nickName", nickNameInput.value);
-            formData.append('funcoes', checkboxActions.funcoesSelecionadas);
+            formData.append("nickName", nickNameInput.value.toLowerCase());
+            formData.append("funcoes", checkboxActions.funcoesSelecionadas);
 
             let componentsComLoading =
                 divPai.querySelector(".loading-component");
@@ -711,8 +755,6 @@ const formActions = {
                 contentType: false,
                 processData: false,
                 success: function (response) {
-
-
                     if (response.success) {
                         if (!loading.classList.contains("hide-content")) {
                             loading.classList.add("hide-content");
@@ -766,7 +808,7 @@ const formActions = {
                         }, 2000);
                     }
                 },
-                error: function (xhr, status, error) {},
+                error: function (xhr, status, error) { },
             });
         }
     },
@@ -908,7 +950,7 @@ const formActions = {
                     }
                 },
 
-                error: function (xhr, status, error) {},
+                error: function (xhr, status, error) { },
             });
         }
     },
