@@ -1,0 +1,359 @@
+.perfil-content {
+
+    background: $dark-secondary-color;
+    height: 100%;
+    width: 100%;
+    min-height: 400px;
+    border-radius: 6px;
+
+    &-header{
+        width: 100%;
+        font-size: 20px;
+        font-weight: 600;
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        align-items: center;
+        background: $dark-secondary-color;
+        padding: 30px 60px;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+
+    &-body{
+        background: $gradient-body;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 20px;
+        padding: 20px 60px 60px 60px;
+        box-shadow: 0 0 100px rgba(255, 255, 255, 0.041) inset;
+
+        .dropdown-header{
+            width: 100%;
+            background: transparent;
+            border: 2px solid $white-color;
+            height: 100%;
+        }
+
+        &-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .error-message {
+                background: $red-color;
+                padding: 5px;
+                border-radius: 6px;
+                font-weight: 400;
+                font-size: 12px;
+            }
+
+            &-input-container {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                position: relative;
+                border: 2px solid $white-color;
+                border-radius: 6px;
+                height: 100%;
+
+                &.error {
+                    border: 2px solid $red-color;
+
+                    span {
+                        color:$white-color;
+                    }
+                }
+
+                span {
+                    position: absolute;
+                    top: 8px;
+                    left: 10px;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 5px;
+
+                    &.eye-span {
+                        top: 10px;
+                        right: 10px;
+                        left: initial;
+                        cursor: pointer;
+                    }
+                }
+
+                input {
+                    outline: none;
+                    background: transparent;
+                    border: none;
+                    color: $white-color;
+                    padding: 7px 10px;
+                }
+
+                input:-webkit-autofill,
+                input:-webkit-autofill:focus {
+                    transition: background-color 600000s 0s,
+                    color 600000s 0s;
+                }
+                input[data-autocompleted] {
+                    background-color: transparent !important;
+                }
+            }
+
+            .custom-multiple-choice{
+                position: relative;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+
+                &-btn{
+                        border: 2px solid $white-color;
+                        padding: 5px 10px;
+                        border-radius: 6px;
+                        font-size: .875rem;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 10px;
+                        height: 100%;
+                        cursor: pointer;
+
+                        div{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            gap: 6px;
+
+                            img{
+                                height: 15px;
+                            }
+                        }
+
+                }
+
+
+                &-body{
+
+                    position: absolute;
+                    top: 40px;
+                    background: $secondary-color;
+                    width: 100%;
+                    z-index: 6;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2px;
+                    border-radius: 6px;
+                    box-shadow: 0px 10px 40px #191919;
+
+                    &-item{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 10px;
+                        padding: 10px 20px;
+                        border-radius: 6px;
+                        overflow: hidden;
+                        position: relative;
+                        cursor: pointer;
+
+                        &:hover{
+
+                            box-shadow: 0 0 65px $orange-color inset;
+
+                            transition: 0.2s ease;
+
+                        }
+
+
+                        &-checkbox{
+                            height: 25px;
+                            width: 25px;
+                            border: 2px solid $white-color;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: 5px;
+                            transition: all .2s;
+
+                            i{
+                                transform: scale(0);
+                                transition: all .2s;
+                            }
+
+                            &.checked{
+
+                                i{
+                                    transform: scale(0.9);
+                                    color: $orange-color;
+                                }
+
+                            }
+                        }
+
+                        &:not(:last-child):after{
+
+                            content: '';
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 1px;
+                            background: rgba(255, 255, 255, 0.329);
+
+                        }
+                        img{
+                            width: 25px;
+                        }
+
+
+                        &-info{
+                            display: flex;
+                            flex-direction: row;
+                            gap: 5px;
+                            align-items: center
+
+                        }
+                    }
+
+                }
+            }
+
+            @import "./input-file-custom";
+
+            .container-upload-image{
+                padding: 30px 30px;
+            }
+
+
+
+
+
+        }
+
+
+    }
+
+
+    &-footer{
+        display: flex;
+        justify-content: end;
+        padding: 0px 60px;
+
+            &-button {
+                position: relative;
+                width: 200px;
+                height: 50px;
+                background: $secondary-color;
+                font-size: 25px;
+                font-weight: 600;
+                gap: 8px;
+                color: $white-color;
+                font-family: $font-primary;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                border-radius: 6px;
+                overflow: hidden;
+                align-self: flex-end;
+                border: 2px solid $white-color;
+                span{
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 5px;
+                    z-index: 5;
+                    font-weight: 400;
+
+                    i {
+                        font-size: 20px;
+                        align-self: center;
+                        padding-top: 0px;
+                    }
+                }
+
+
+
+
+                &:hover{
+
+
+                    &::before{
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        background: #F97300;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 6px;
+                        animation: 0.3s animationButton;
+
+                    }
+
+                    @keyframes animationButton {
+
+                        from{
+                            left: -350px;
+                        }
+
+                        to{
+                            left: 0px;
+
+                        }
+
+                    }
+                }
+
+                &.deslogado{
+
+                    background: rgb(3, 3, 43);
+                    font-size: 16px;
+                    cursor: default;
+
+                    &:hover{
+
+
+                        &::before{
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            background: #240086;
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 6px;
+                            animation: 0.3s animationButtonDeslogado;
+
+                        }
+
+                        @keyframes animationButtonDeslogado {
+
+                            from{
+                                opacity: 0;
+                            }
+
+                            to{
+                                opacity: 1;
+
+                            }
+
+                        }
+                    }
+
+
+
+                }
+
+            }
+
+
+    }
+
+
+}

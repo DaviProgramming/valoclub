@@ -18,7 +18,8 @@ Route::get('/meu-perfil', function () {
 
     } else {
 
-        return view('home');
+        return redirect(route('home'));
+
     }
 
 

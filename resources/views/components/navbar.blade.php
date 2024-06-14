@@ -4,9 +4,9 @@
 @auth
 
 <nav>
-    <div class="logo">
-        <img src="./assets/logo.png" alt="">
-    </div>
+    <a href="/" class="logo">
+        <img src="./assets/logo-new.png" alt="">
+    </a>
     <div class="user-actions">
         <div class="notificacoes">
             <div class="notificacoes-header">
