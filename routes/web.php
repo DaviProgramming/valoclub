@@ -30,6 +30,7 @@ Route::post('/evento/cadastro', function (Illuminate\Http\Request $request) {
     $senha = $dados['senha'];
     $nickname = $dados['nickName'];
     $elo = $dados['elo_id'];
+    $funcoes = $dados['funcoes'];
 
     $existeEmail = User::where('email', $email)->exists();
     $existeNickName = User::where('nome', $nickname)->exists();
@@ -54,6 +55,7 @@ Route::post('/evento/cadastro', function (Illuminate\Http\Request $request) {
         $imagem->move(public_path('uploads'), $nomeImagem);
 
         $urlImagem = asset('uploads/' . $nomeImagem);
+
     } else {
 
         $urlImagem = 'null';
@@ -67,6 +69,7 @@ Route::post('/evento/cadastro', function (Illuminate\Http\Request $request) {
         $user->email = $email;
         $user->senha = $senha;
         $user->imagem_url = $urlImagem;
+        $user->roles = json_encode($funcoes);
         $user->save();
 
         return response()->json(['success' => true]);
@@ -74,6 +77,7 @@ Route::post('/evento/cadastro', function (Illuminate\Http\Request $request) {
 
         return response()->json(['success' => false, 'error' => $e->getMessage()]);
     }
+
 })->name('evento.cadastro');
 
 Route::post('/evento/login', function (Illuminate\Http\Request $request) {

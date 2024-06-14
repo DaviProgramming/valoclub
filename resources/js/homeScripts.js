@@ -149,6 +149,7 @@ const createListeners = () => {
 };
 
 const checkboxActions = {
+
     funcoesSelecionadas: [],
 
     clickCheckBox(elementoClicado) {
@@ -190,12 +191,12 @@ const checkboxActions = {
 
         this.funcoesSelecionadas.push(divPai.classList[1]);
 
-        this.verificaQuantosMarcados(divPai.parentNode, divPai);
+        this.verificaQuantosMarcados(divPai.parentNode);
 
 
     },
 
-    verificaQuantosMarcados(divPai, elementoClicado) {
+    verificaQuantosMarcados(divPai) {
 
 
         let allCheckBoxs = divPai.querySelectorAll(".custom-multiple-choice-body-item-checkbox.checked");
@@ -214,7 +215,11 @@ const checkboxActions = {
                 }
             );
 
+            console.log(arraySemPrimeiroElemento);
+
             this.funcoesSelecionadas = arraySemPrimeiroElemento;
+
+            console.log(this.funcoesSelecionadas);
 
         }
 
@@ -453,6 +458,7 @@ const validations = {
 };
 
 const formActions = {
+
     insereImagemPrevia(imagem) {
         let imgArea = document.querySelector(".img-area");
 
@@ -510,6 +516,19 @@ const formActions = {
     },
 
     clickButtonCriarConta(button) {
+
+        console.log(checkboxActions.funcoesSelecionadas);
+
+        if(checkboxActions.funcoesSelecionadas.length > 3){
+
+            let arraySemDuplicados = checkboxActions.funcoesSelecionadas.filter((item, index) => {
+                return checkboxActions.funcoesSelecionadas.indexOf(item) === index;
+            });
+
+            checkboxActions.funcoesSelecionadas = arraySemDuplicados;
+
+        }
+
         let divPai = button.parentNode.parentNode;
 
         let modalBodyContent = divPai.querySelector(".modal-body-container");
@@ -543,7 +562,6 @@ const formActions = {
             "span#span-confirma-senha-cadastro-error"
         );
 
-        let imagemInput = modalBodyContent.querySelector("#formFileSm");
 
         let eloSelected = modalBodyContent.querySelector(
             ".dropdown-header span"
@@ -668,6 +686,7 @@ const formActions = {
             formData.append("senha", senhaInput.value);
             formData.append("elo_id", eloSelected);
             formData.append("nickName", nickNameInput.value);
+            formData.append('funcoes', checkboxActions.funcoesSelecionadas);
 
             let componentsComLoading =
                 divPai.querySelector(".loading-component");
@@ -692,6 +711,8 @@ const formActions = {
                 contentType: false,
                 processData: false,
                 success: function (response) {
+
+
                     if (response.success) {
                         if (!loading.classList.contains("hide-content")) {
                             loading.classList.add("hide-content");

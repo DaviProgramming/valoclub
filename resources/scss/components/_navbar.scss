@@ -43,13 +43,15 @@ nav {
 
         @import "./notificacoes";
 
-        .hamburguer-menu{
+        .hamburguer-menu {
             cursor: pointer;
-            &:hover{
+            &:hover {
                 color: $orange-color;
             }
             transition: 0.2s;
         }
+
+
 
         .notificacoes,
         .hamburguer-menu {
@@ -68,8 +70,7 @@ nav {
 
                 &:hover {
                     color: $orange-color;
-            transition: 0.2s;
-
+                    transition: 0.2s;
                 }
             }
 
@@ -117,9 +118,24 @@ nav {
                 width: 50px;
                 border-radius: 50%;
                 object-fit: cover;
+                position: relative;
             }
 
             &.deslogado {
+
+
+
+                &:hover {
+                    color: $orange-color;
+
+                    .perfil-image{
+                        background: $orange-color;
+                        transition: 0.2s;
+                    }
+
+
+                }
+
                 img {
                     filter: invert(1);
                 }

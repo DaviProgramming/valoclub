@@ -56,113 +56,122 @@
 
         <div class="lobbys">
 
-            <div class="card-lobby">
+            <div class="lobbys-container">
 
-                <div class="card-lobby-header">
-                    <div class="card-lobby-media-elo">
-                        <img src="./assets/elos-images/Radiant_Rank.png" alt="">
+                <div class="card-lobby">
+
+                    <div class="card-lobby-header">
+                        <div class="card-lobby-media-elo">
+                            <img src="./assets/elos-images/Radiant_Rank.png" alt="">
+                        </div>
+                        <div class="card-lobby-nome">Matuto</div>
+
                     </div>
-                    <div class="card-lobby-nome">Matuto</div>
 
+                    <img class="main-character" src="assets/agents-images/jett.png" alt="">
+
+
+                    <div class="card-lobby-body">
+                        <div class="card-lobby-body-title">Funções</div>
+                        <div class="card-lobby-body-roles">
+                            <div class="card-lobby-body-roles-role">
+                                <img src="assets/roles-images/duelista.png" alt="duelista">
+                                <span>Duelista</span>
+                            </div>
+                            <div class="card-lobby-body-roles-role">
+                                <img src="assets/roles-images/iniciador.png" alt="iniciador">
+                                <span>Iniciador</span>
+                            </div>
+                            <div class="card-lobby-body-roles-role">
+                                <img src="assets/roles-images/Controlador.png" alt="controlador">
+                                <span>Controlador</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <button class="card-lobby-button"><span><i class="fa-solid fa-arrow-right"></i>Solicitar</span></button>
+                </div>
+                <div class="card-lobby">
+
+                    <div class="card-lobby-header">
+                        <div class="card-lobby-media-elo">
+                            <img src="./assets/elos-images/Radiant_Rank.png" alt="">
+                        </div>
+                        <div class="card-lobby-nome">Matuto</div>
+
+                    </div>
+
+                    <img class="main-character" src="assets/agents-images/jett.png" alt="">
+
+
+                    <div class="card-lobby-body">
+                        <div class="card-lobby-body-title">Funções</div>
+                        <div class="card-lobby-body-roles">
+                            <div class="card-lobby-body-roles-role">
+                                <img src="assets/roles-images/duelista.png" alt="duelista">
+                                <span>Duelista</span>
+                            </div>
+                            <div class="card-lobby-body-roles-role">
+                                <img src="assets/roles-images/iniciador.png" alt="iniciador">
+                                <span>Iniciador</span>
+                            </div>
+                            <div class="card-lobby-body-roles-role">
+                                <img src="assets/roles-images/Controlador.png" alt="controlador">
+                                <span>Controlador</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <button class="card-lobby-button"><span><i class="fa-solid fa-arrow-right"></i>Solicitar</span></button>
+                </div>
+                <div class="card-lobby">
+
+                    <div class="card-lobby-header">
+                        <div class="card-lobby-media-elo">
+                            <img src="./assets/elos-images/Radiant_Rank.png" alt="">
+                        </div>
+                        <div class="card-lobby-nome">Matuto</div>
+
+                    </div>
+
+                    <img class="main-character" src="assets/agents-images/jett.png" alt="">
+
+
+                    <div class="card-lobby-body">
+                        <div class="card-lobby-body-title">Funções</div>
+                        <div class="card-lobby-body-roles">
+                            <div class="card-lobby-body-roles-role">
+                                <img src="assets/roles-images/duelista.png" alt="duelista">
+                                <span>Duelista</span>
+                            </div>
+                            <div class="card-lobby-body-roles-role">
+                                <img src="assets/roles-images/iniciador.png" alt="iniciador">
+                                <span>Iniciador</span>
+                            </div>
+                            <div class="card-lobby-body-roles-role">
+                                <img src="assets/roles-images/Controlador.png" alt="controlador">
+                                <span>Controlador</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <button class="card-lobby-button"><span><i class="fa-solid fa-arrow-right"></i>Solicitar</span></button>
                 </div>
 
-                <img class="main-character" src="assets/agents-images/jett.png" alt="">
-
-
-                <div class="card-lobby-body">
-                    <div class="card-lobby-body-title">Funções</div>
-                    <div class="card-lobby-body-roles">
-                        <div class="card-lobby-body-roles-role">
-                            <img src="assets/roles-images/duelista.png" alt="duelista">
-                            <span>Duelista</span>
-                        </div>
-                        <div class="card-lobby-body-roles-role">
-                            <img src="assets/roles-images/iniciador.png" alt="iniciador">
-                            <span>Iniciador</span>
-                        </div>
-                        <div class="card-lobby-body-roles-role">
-                            <img src="assets/roles-images/Controlador.png" alt="controlador">
-                            <span>Controlador</span>
-                        </div>
-                    </div>
-                </div>
 
 
 
-                <button class="card-lobby-button"><span><i class="fa-solid fa-arrow-right"></i>Solicitar</span></button>
             </div>
 
-            <div class="card-lobby">
-
-                <div class="card-lobby-header">
-                    <div class="card-lobby-media-elo">
-                        <img src="./assets/elos-images/Ascendant_3_Rank.png" alt="">
-                    </div>
-                    <div class="card-lobby-nome">Matuto</div>
-
-                </div>
-
-                <img class="main-character" src="assets/agents-images/jett.png" alt="">
-
-
-                <div class="card-lobby-body">
-                    <div class="card-lobby-body-title">Funções</div>
-                    <div class="card-lobby-body-roles">
-                        <div class="card-lobby-body-roles-role">
-                            <img src="assets/roles-images/duelista.png" alt="duelista">
-                            <span>Duelista</span>
-                        </div>
-                        <div class="card-lobby-body-roles-role">
-                            <img src="assets/roles-images/iniciador.png" alt="iniciador">
-                            <span>Iniciador</span>
-                        </div>
-                        <div class="card-lobby-body-roles-role">
-                            <img src="assets/roles-images/Controlador.png" alt="controlador">
-                            <span>Controlador</span>
-                        </div>
-                    </div>
-                </div>
 
 
 
-                <button class="card-lobby-button"><span><i class="fa-solid fa-arrow-right"></i>Solicitar</span></button>
-            </div>
-
-            <div class="card-lobby">
-
-                <div class="card-lobby-header">
-                    <div class="card-lobby-media-elo">
-                        <img src="./assets/elos-images/Diamond_3_Rank.png" alt="">
-                    </div>
-                    <div class="card-lobby-nome">Matuto</div>
-
-                </div>
-
-                <img class="main-character" src="assets/agents-images/jett.png" alt="">
-
-
-                <div class="card-lobby-body">
-                    <div class="card-lobby-body-title">Funções</div>
-                    <div class="card-lobby-body-roles">
-                        <div class="card-lobby-body-roles-role">
-                            <img src="assets/roles-images/duelista.png" alt="duelista">
-                            <span>Duelista</span>
-                        </div>
-                        <div class="card-lobby-body-roles-role">
-                            <img src="assets/roles-images/iniciador.png" alt="iniciador">
-                            <span>Iniciador</span>
-                        </div>
-                        <div class="card-lobby-body-roles-role">
-                            <img src="assets/roles-images/Controlador.png" alt="controlador">
-                            <span>Controlador</span>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <button class="card-lobby-button"><span><i class="fa-solid fa-arrow-right"></i>Solicitar</span></button>
-            </div>
 
 
         </div>

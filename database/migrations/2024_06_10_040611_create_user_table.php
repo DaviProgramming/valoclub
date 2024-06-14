@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('nome');
             $table->string('elo');
             $table->string('senha');
-            $table->string('imagem_url');
+            $table->string('imagem_url')->nullable();
             $table->string('email');
+            $table->json('roles')->nullable();
         });
     }
 

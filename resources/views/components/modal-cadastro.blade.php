@@ -68,12 +68,13 @@
                         </div>
                     </div>
 
+                    <span class="error-message hide-content" id="span-selecione-elo-cadastro-error"><i
+                        class="fa-solid fa-circle-exclamation"></i>Selecione seu elo</span>
+
                     <div class="custom-multiple-choice cadastro">
                         <div class="custom-multiple-choice-btn">
-
                             <i class="fa-solid fa-chevron-down"></i>
                             <div class="functions-selected">Selecione até 3 funções</div>
-
                         </div>
                         <div class="custom-multiple-choice-body hide-content">
 
@@ -121,13 +122,8 @@
                         </div>
                     </div>
 
-                    {{-- <div class="">
-                        <label for="formFileSm" class="form-label">Imagem Perfil</label>
-                        <input class="form-control form-control-sm" id="formFileSm" type="file">
-                    </div> --}}
-
-
-
+                    <span class="error-message hide-content" id="span-selecione-funcao-cadastro-error"><i
+                        class="fa-solid fa-circle-exclamation"></i>Selecione pelo menos 1 função</span>
 
 
                     <div class="container-upload-image">
