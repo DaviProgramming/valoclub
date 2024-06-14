@@ -4,7 +4,7 @@
 
         @auth
 
-        <a href="/meu-perfil" class="aside-component-content-header" >
+        <div  class="aside-component-content-header" >
 
             <div class="aside-component-content-header-profile">
                 <img class="aside-component-content-header-profile-image logado" src="{{auth()->user()->imagem_url}}" alt="">
@@ -13,7 +13,7 @@
                 <span>Meu perfil</span>
             </div>
 
-        </a>
+        </div>
 
         @endauth
 

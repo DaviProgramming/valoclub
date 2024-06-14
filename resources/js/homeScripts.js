@@ -5,6 +5,19 @@ $.ajaxSetup({
 });
 
 const createListeners = () => {
+
+    const divMeuPerfil = document.querySelector('.aside-component-content-header');
+
+    if(divMeuPerfil != null){
+
+        divMeuPerfil.addEventListener('click' , () => {
+
+            hrefsActions.meuPerfil();
+
+        })
+
+    }
+
     const checkBoxHeader = document.querySelectorAll(
         ".custom-multiple-choice.cadastro"
     );
@@ -147,6 +160,17 @@ const createListeners = () => {
         });
     }
 };
+
+
+const hrefsActions = {
+
+    meuPerfil(){
+
+        window.location.href = "/meu-perfil";
+
+    }
+
+}
 
 const checkboxActions = {
     funcoesSelecionadas: [],
