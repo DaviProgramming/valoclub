@@ -36,6 +36,8 @@ Route::get('/meu-perfil', function () {
 })->name('perfil');
 
 
+
+
 Route::post('/evento/cadastro', function (Illuminate\Http\Request $request) {
 
     $dados = $request->all();
@@ -133,7 +135,6 @@ Route::post('/evento/login', function (Illuminate\Http\Request $request) {
 
     }
 })->name('evento.login');
-
 
 Route::post('/evento/logout', function (Illuminate\Http\Request $request) {
 
