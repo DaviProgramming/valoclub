@@ -4,7 +4,7 @@
 @auth
 
 <nav>
-    <a href="/" class="logo">
+    <a href="#" class="logo">
         <img src="./assets/logo-new.png" alt="">
     </a>
     <div class="user-actions">
@@ -62,9 +62,9 @@
 
 
 <nav>
-    <div class="logo">
+    <a href="#" class="logo">
         <img src="./assets/logo.png" alt="">
-    </div>
+    </a>
     <div class="user-actions">
 
         <div class="perfil deslogado" data-bs-toggle="modal" data-bs-target="#modalLogin">

@@ -18,6 +18,7 @@
 <section class="container perfil">
 
 
+
     <div class="aside-perfil">
         <div class="aside-perfil-item active">
             <i class="fa-solid fa-pen-to-square"></i>
@@ -58,7 +59,7 @@
                 <div class="dropdown select-elo create-account">
                     <div class="dropdown-header">
                         <i class="fa-solid fa-chevron-down"></i>
-                        <span data-elo-id-selected="0"> Selecione seu elo</span>
+                        <span data-elo-id-selected="{{Auth::user()->elo}}"> {{$elo->nome_elo}}</span>
                     </div>
                     <div class="dropdown-body">
                         <div class="dropdown-body-option" data-elo-id="1">Ferro</div>
@@ -76,6 +77,7 @@
                 <span class="error-message hide-content" id="span-selecione-elo-cadastro-error"><i
                     class="fa-solid fa-circle-exclamation"></i> Selecione seu elo</span>
 
+
             </div>
 
             <div class="perfil-content-body-container">
@@ -83,7 +85,13 @@
                 <div class="custom-multiple-choice edit-profile">
                     <div class="custom-multiple-choice-btn">
                         <i class="fa-solid fa-chevron-down"></i>
-                        <div class="functions-selected"> Selecione até 3 funções</div>
+                        <div class="functions-selected">
+                            @foreach ($roles as $role)
+
+                            <div class="function-selected"> <img src="assets/roles-images/{{$role}}.png" alt="{{$role}}">  <span class="function-selected-span"> {{$role}}</span></div>
+
+                            @endforeach
+                        </div>
                     </div>
                     <div class="custom-multiple-choice-body hide-content">
 

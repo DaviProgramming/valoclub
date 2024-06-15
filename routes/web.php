@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Elo;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,7 +15,16 @@ Route::get('/meu-perfil', function () {
 
     if ($user) {
 
-        return view('pages.perfil');
+        $elo = Elo::where('id', $user->elo)->first();
+
+        $roles = explode(',', $user->roles);
+        $roles = array_map('trim', $roles);
+        $roles = array_map(function($role) {
+            return trim($role, '"');
+        }, $roles);
+
+
+        return view('pages.perfil', ['elo' => $elo, 'roles' => $roles]);
 
     } else {
 
