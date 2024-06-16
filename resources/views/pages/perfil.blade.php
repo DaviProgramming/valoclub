@@ -18,22 +18,23 @@
 <section class="container perfil">
 
 
-
     <div class="aside-perfil">
-        <div class="aside-perfil-item active">
+        <a href="{{route('perfil', ['page' => 'profile'])}}" class="aside-perfil-item <?php if($page == "profile") echo 'active'?>">
             <i class="fa-solid fa-pen-to-square"></i>
             <span>Editar Perfil</span>
-        </div>
-        <div class="aside-perfil-item">
+        </a>
+        <a href="{{route('perfil', ['page' => 'notification'])}}" class="aside-perfil-item <?php if($page == "notification") echo 'active'?>">
             <i class="fa fa-bell icon-notification" ></i>
             <span>Notificações</span>
-        </div>
-        <div class="aside-perfil-item">
+        </a>
+        <a href="{{route('perfil', ['page' => 'security'])}}" class="aside-perfil-item <?php if($page == "security") echo 'active'?>">
             <i class="fa-solid fa-lock"></i>
             <span>Segurança</span>
-        </div>
+        </a>
 
     </div>
+
+    @if($page == 'profile')
 
     <div class="perfil-content edit-profile">
 
@@ -162,10 +163,51 @@
         </div>
 
         <div class="perfil-content-footer">
-            <button type="button" class="perfil-content-footer-button"><span><i class="fa-solid fa-download"></i> Salvar</span></button>
+            <button type="button" class="perfil-content-footer-button"><span> Salvar</span></button>
         </div>
 
     </div>
+
+    @elseif ($page == 'notification')
+
+    <div class="perfil-content notification">
+
+        <div class="perfil-content-header">
+            <i class="fa fa-bell icon-notification"></i> <span>Notificações</span>
+        </div>
+
+        <div class="perfil-content-body">
+
+
+        </div>
+
+        <div class="perfil-content-footer">
+            <button type="button" class="perfil-content-footer-button"><span> Salvar</span></button>
+        </div>
+
+    </div>
+
+
+    @elseif ($page == 'security')
+
+    <div class="perfil-content security">
+
+        <div class="perfil-content-header">
+            <i class="fa-solid fa-lock"></i> <span>Segurança</span>
+        </div>
+
+        <div class="perfil-content-body">
+
+
+        </div>
+
+        <div class="perfil-content-footer">
+            <button type="button" class="perfil-content-footer-button"><span> Salvar</span></button>
+        </div>
+
+    </div>
+
+    @endif
 
 
 </section>

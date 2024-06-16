@@ -6,7 +6,7 @@ $.ajaxSetup({
 
 const createListeners = () => {
 
-    const divMeuPerfil = document.querySelector('.aside-component-content-header');
+    const divMeuPerfil = document.querySelector('.aside-component-content-header.logado');
 
     if(divMeuPerfil != null){
 
@@ -166,7 +166,7 @@ const hrefsActions = {
 
     meuPerfil(){
 
-        window.location.href = "/meu-perfil";
+        window.location.href = "/meu-perfil&profile";
 
     }
 

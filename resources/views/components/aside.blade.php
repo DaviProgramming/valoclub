@@ -4,7 +4,7 @@
 
         @auth
 
-        <div  class="aside-component-content-header" >
+        <div  class="aside-component-content-header logado" >
 
             <div class="aside-component-content-header-profile">
                 <img class="aside-component-content-header-profile-image logado" src="{{auth()->user()->imagem_url}}" alt="">
@@ -19,7 +19,7 @@
 
         @guest
 
-        <div class="aside-component-content-header" data-bs-toggle="modal" data-bs-target="#modalLogin">
+        <div class="aside-component-content-header deslogado" data-bs-toggle="modal" data-bs-target="#modalLogin">
 
             <div class="aside-component-content-header-profile">
                 <img class="aside-component-content-header-profile-image" src="assets/user.png" alt="">

@@ -27,7 +27,7 @@
         gap: 20px;
         padding: 20px 60px 60px 60px;
         box-shadow: 0 0 100px rgba(255, 255, 255, 0.041) inset;
-
+        min-height: 300px;
         .dropdown-header{
             width: 100%;
             background: transparent;
@@ -348,6 +348,24 @@
 
 
 
+                }
+
+
+                &.disabled{
+                    background: $grey-color;
+
+                    cursor: default!important;
+
+
+                    &:hover{
+
+                        &::before{
+                            background: $grey-color;
+                            animation: none!important
+
+                        }
+
+                    }
                 }
 
             }

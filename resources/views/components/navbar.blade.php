@@ -63,7 +63,7 @@
 
 <nav>
     <a href="#" class="logo">
-        <img src="./assets/logo.png" alt="">
+        <img src="./assets/logo-new.png" alt="">
     </a>
     <div class="user-actions">
 

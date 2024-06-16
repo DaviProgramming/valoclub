@@ -5,7 +5,35 @@ $.ajaxSetup({
 });
 
 
+
+
 const createListeners = () => {
+
+    const buttonSalvar = document.querySelector('.perfil-content-footer button');
+
+    if(buttonSalvar != null){
+
+        buttonSalvar.addEventListener('click', (e) => {
+
+
+            e.preventDefault();
+
+            editProfileActions.clickButtonSalvar(e.target);
+
+        })
+
+    }
+
+    const logoutButton = document.querySelector(
+        ".aside-component-content-footer .logout"
+    );
+
+    if (logoutButton != null) {
+
+        logoutButton.addEventListener("click", () => {
+            asideActions.logout();
+        });
+    }
 
     const checkBoxHeader = document.querySelectorAll(
         ".custom-multiple-choice.edit-profile"
@@ -83,6 +111,46 @@ const createListeners = () => {
     }
 
 
+
+}
+
+
+const editProfileActions = {
+
+    clickButtonSalvar(button){
+
+        let bodyContent = document.querySelector('.perfil-content-body');
+
+        let errosContados = 0;
+
+        this.disableButton(button);
+
+
+
+    },
+
+    disableButton(button){
+
+        let buttonWillByDisabled = button;
+
+
+        if(!button.classList.contains('perfil-content-footer-button')){
+
+            buttonWillByDisabled = button.parentNode;
+
+
+        }
+
+
+
+        if(!buttonWillByDisabled.classList.contains('disabled')){
+
+            buttonWillByDisabled.classList.add('disabled');
+
+        }
+
+
+    }
 
 }
 

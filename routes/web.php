@@ -9,7 +9,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/meu-perfil', function () {
+Route::get('/meu-perfil&{page}', function ($page) {
 
     $user = Auth::user();
 
@@ -23,8 +23,10 @@ Route::get('/meu-perfil', function () {
             return trim($role, '"');
         }, $roles);
 
+        $pagina = $page;
 
-        return view('pages.perfil', ['elo' => $elo, 'roles' => $roles]);
+
+        return view('pages.perfil', ['elo' => $elo, 'roles' => $roles, 'page' => $pagina]);
 
     } else {
 
