@@ -58,7 +58,7 @@ Certifique-se de ter as seguintes ferramentas instaladas em seu ambiente de dese
     npm run dev
     ```
 
-#### Pronto, a aplicação já deve está sendo executada no seu localhost 
+#### Pronto, a aplicação já deve está sendo executada no seu localhost :smile:
 
 
 
