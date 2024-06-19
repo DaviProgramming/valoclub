@@ -96,8 +96,8 @@
                     </div>
                     <div class="custom-multiple-choice-body hide-content">
 
-                        <div class="custom-multiple-choice-body-item controlador" >
-                            <span class="custom-multiple-choice-body-item-checkbox">
+                        <div class="custom-multiple-choice-body-item controlador">
+                            <span class="custom-multiple-choice-body-item-checkbox <?php if(in_array('controlador', $roles)) echo 'checked'; ?>">
                                 <i class="fa-solid fa-check"></i>
                             </span>
                             <div class="custom-multiple-choice-body-item-info">
@@ -106,8 +106,8 @@
                             </div>
                         </div>
 
-                        <div class="custom-multiple-choice-body-item duelista">
-                            <span class="custom-multiple-choice-body-item-checkbox">
+                        <div class="custom-multiple-choice-body-item duelista" >
+                            <span class="custom-multiple-choice-body-item-checkbox <?php if(in_array('duelista', $roles)) echo 'checked'; ?>">
                                 <i class="fa-solid fa-check"></i>
                             </span>
                             <div class="custom-multiple-choice-body-item-info">
@@ -117,7 +117,7 @@
                         </div>
 
                         <div class="custom-multiple-choice-body-item iniciador">
-                            <span class="custom-multiple-choice-body-item-checkbox">
+                            <span class="custom-multiple-choice-body-item-checkbox <?php if(in_array('iniciador', $roles)) echo 'checked'; ?>">
                                 <i class="fa-solid fa-check"></i>
                             </span>
                             <div class="custom-multiple-choice-body-item-info">
@@ -127,7 +127,7 @@
                         </div>
 
                         <div class="custom-multiple-choice-body-item sentinela">
-                            <span class="custom-multiple-choice-body-item-checkbox">
+                            <span class="custom-multiple-choice-body-item-checkbox <?php if(in_array('sentinela', $roles)) echo 'checked'; ?>">
                                 <i class="fa-solid fa-check"></i>
                             </span>
                             <div class="custom-multiple-choice-body-item-info">
